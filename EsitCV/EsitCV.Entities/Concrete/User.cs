@@ -26,7 +26,7 @@ namespace EsitCV.Entities.Concrete
         public UserDisability UserDisability { get; set; }
         public int UserDisabilityID { get; set; }
 
-        public ICollection<JobApplicationAndJobPosting> jobApplicationAndJobPostings { get; set; }
+        public ICollection<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
         public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
         public ICollection<IFeatures> Features { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using EsitCV.Entities.Abstract.Features;
+using EsitCV.Shared.Entities.Abstrack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete.Features
 {
-    public class Education : IFeatures
+    public class Education : EntityBase<int>, IFeatures, IEntity
     {
     }
 }
