@@ -1,4 +1,4 @@
-﻿using E_Commerce.Business.AbstractUtilities;
+﻿using EsitCV.Business.AbstractUtilities;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Business.Utilities
+namespace EsitCV.Business.Utilities
 {
     public class LoggerManager : ILoggerService
     {

@@ -1,8 +1,7 @@
-﻿using E_Commerce.Business.Abstract;
-using E_Commerce.Business.AbstractUtilities;
-using E_Commerce.Business.Concrete;
-using E_Commerce.Business.Utilities;
-using E_Commerce.Data.Concrete.Context;
+﻿
+using EsitCV.Business.AbstractUtilities;
+
+using EsitCV.Business.Utilities;
 using EsitCV.Data.Concrete.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -13,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Business.Extensions
+namespace EsitCV.Business.Extensions
 {
     public static class ServiceCollectionExtension
     {

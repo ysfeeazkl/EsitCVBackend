@@ -25,4 +25,8 @@
     <Folder Include="Concrete\Mappings\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EsitCV.Entities\EsitCV.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

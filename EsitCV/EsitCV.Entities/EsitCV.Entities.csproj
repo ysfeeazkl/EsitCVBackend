@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <Folder Include="ComplexTypes\" />
-    <Folder Include="Concrete\" />
     <Folder Include="Dtos\" />
     <Folder Include="Utilities\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EsitCV.Shared\EsitCV.Shared.csproj" />
   </ItemGroup>
 
 </Project>

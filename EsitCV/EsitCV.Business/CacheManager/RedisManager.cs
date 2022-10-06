@@ -1,4 +1,4 @@
-﻿using E_Commerce.Business.AbstractUtilities;
+﻿using EsitCV.Business.AbstractUtilities;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Business.CacheManager
+namespace EsitCV.Business.CacheManager
 {
     public class RedisManager : IRedisService
     {
