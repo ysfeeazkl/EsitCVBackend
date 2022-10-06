@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ComplexTypes\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+
 </Project>

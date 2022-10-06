@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsitCV.Business", "EsitCV.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsitCV.Entities", "EsitCV.Entities\EsitCV.Entities.csproj", "{13E159D5-96E0-4A9D-A8AF-E386A9BF79EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsitCV.Web", "EsitCV.Web\EsitCV.Web.csproj", "{55CB3F97-8E1F-4161-8F5C-DF3086543475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsitCV.API", "EsitCV.Web\EsitCV.API.csproj", "{55CB3F97-8E1F-4161-8F5C-DF3086543475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
