@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete
 {
-    public class OperationClaim : EntityBase<int>, IEntity
+    public class JobPosting : EntityBase<int>, IEntity //buraya da iş ilanı için soru koleksiyonu gibi bişi yap
     {
-        public string Name { get; set; }
-
-        public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
+        public Company Company { get; set; }
+        public int CompanyID { get; set; }
     }
 }

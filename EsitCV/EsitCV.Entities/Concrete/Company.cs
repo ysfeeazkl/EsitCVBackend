@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EsitCV.Shared.Entities.Abstrack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete
 {
-    internal class Company
+    public class Company: EntityBase<int>,IEntity
     {
+        public string Name { get; set; }
+        public string Fullname { get; set; }
+        public string PhoneNumber { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+        public string EmailAddress { get; set; }
+        public string? IpAddress { get; set; }
+        public DateTime YearOfFoundation { get; set; }
+        public DateTime? LastLogin { get; set; }
+
+        public ICollection<JobPosting> JobPostings { get; set; }
+
+
+
+
     }
 }

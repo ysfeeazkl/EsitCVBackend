@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="ComplexTypes\" />
+    <Folder Include="Concrete\Disabled\" />
+    <Folder Include="Concrete\Features\" />
     <Folder Include="Dtos\" />
     <Folder Include="Utilities\" />
   </ItemGroup>

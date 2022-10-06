@@ -1,4 +1,5 @@
-﻿using EsitCV.Shared.Entities.Abstrack;
+﻿using EsitCV.Entities.Abstract.Features;
+using EsitCV.Shared.Entities.Abstrack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,15 @@ namespace EsitCV.Entities.Concrete
         public string? IpAddress { get; set; }
         public DateTime Birthday { get; set; }
         public DateTime LastLogin { get; set; }
+
+        //
+
+        public UserDisability UserDisability { get; set; }
+        public int UserDisabilityID { get; set; }
+
+        public ICollection<JobApplicationAndJobPosting> jobApplicationAndJobPostings { get; set; }
+        public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
+        public ICollection<IFeatures> Features { get; set; }
+
     }
 }

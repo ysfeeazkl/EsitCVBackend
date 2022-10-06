@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EsitCV.Entities.Concrete
+namespace EsitCV.Entities.Concrete.Disableds
 {
-    public class OperationClaim : EntityBase<int>, IEntity
+    public class Disability: EntityBase<int>,IEntity
     {
         public string Name { get; set; }
-
-        public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
     }
 }
