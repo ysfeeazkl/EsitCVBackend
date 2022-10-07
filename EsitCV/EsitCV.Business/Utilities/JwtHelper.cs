@@ -27,7 +27,7 @@ namespace EsitCV.Business.Utilities
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
 
-        public AccessToken CreateToken(User user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken)
+        public AccessToken CreateTokenForUser(User user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken)
         {
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration + 300);
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);

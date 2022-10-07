@@ -25,6 +25,7 @@ namespace EsitCV.Data.Concrete.Context
         public DbSet<WorkExperience> WorkExperiences { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<CompanyAndOperationClaim> CompanyAndOperationClaims { get; set; }
         public DbSet<CompanyPicture> CompanyPictures { get; set; }
         public DbSet<CurriculumVitae> CurriculumVitaes { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
