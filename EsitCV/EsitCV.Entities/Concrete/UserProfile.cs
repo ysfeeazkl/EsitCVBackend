@@ -15,10 +15,10 @@ namespace EsitCV.Entities.Concrete
         public ICollection<AreasOfInterest> AreasOfInterest { get; set; }
         public ICollection<Course>  Courses { get; set; }
         public ICollection<Education> Education { get; set; }
-        public ICollection<Hobbies> Hobbies { get; set; }
+        public ICollection<Hobbie> Hobbies { get; set; }
         public ICollection<Language> Language { get; set; }
         public ICollection<LicenseOrCertificate> LicenseOrCertificate { get; set; }
-        public ICollection<Project> Project { get; set; }
+        public ICollection<CurrentProject> Project { get; set; }
         public ICollection<WorkExperience> WorkExperience { get; set; }
 
 

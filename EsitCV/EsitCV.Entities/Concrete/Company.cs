@@ -16,11 +16,16 @@ namespace EsitCV.Entities.Concrete
         public byte[] PasswordSalt { get; set; }
         public string EmailAddress { get; set; }
         public string? IpAddress { get; set; }
+        public string Sector { get; set; }
+        public string TaxNumber { get; set; }
+
         public DateTime YearOfFoundation { get; set; }
         public DateTime? LastLogin { get; set; }
 
-        public int CompanyPictureID { get; set; }
+        public Location Location { get; set; }
+        public int LocationID { get; set; }
         public CompanyPicture CompanyPicture { get; set; }
+        public int CompanyPictureID { get; set; }
 
         public ICollection<JobPosting> JobPostings { get; set; }
 

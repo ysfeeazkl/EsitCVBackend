@@ -1,4 +1,5 @@
-﻿using EsitCV.Shared.Entities.Abstrack;
+﻿using EsitCV.Entities.ComplexTypes;
+using EsitCV.Shared.Entities.Abstrack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,12 @@ namespace EsitCV.Entities.Concrete
     {
         public string Header { get; set; }
         public string Content { get; set; }
+        public string Sector { get; set; }
+        public string JobPosition { get; set; }
+        public string LicenceDegree { get; set; }
+        public string Language { get; set; }
+        public TypeOfWork  TypeOfWork{ get; set; }
+
 
         public Company Company { get; set; }
         public int CompanyID { get; set; }
