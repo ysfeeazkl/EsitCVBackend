@@ -19,6 +19,9 @@ namespace EsitCV.Entities.Concrete
         public DateTime YearOfFoundation { get; set; }
         public DateTime? LastLogin { get; set; }
 
+        public int CompanyPictureID { get; set; }
+        public CompanyPicture CompanyPicture { get; set; }
+
         public ICollection<JobPosting> JobPostings { get; set; }
 
 

@@ -8,7 +8,13 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete.Features
 {
-    public class Organization : EntityBase<int>, IFeatures, IEntity
+    public class Organization : FeaturesBase<int>, IFeatures, IEntity
     {
+        public string Name { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? FinishDate { get; set; }
+        public bool? Currently { get; set; }
+        public string Content { get; set; }
+        public string IssuingBodyName { get; set; }
     }
 }

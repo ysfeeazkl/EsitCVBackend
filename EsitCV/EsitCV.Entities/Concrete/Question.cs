@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete
 {
-    public class JobApplicationAndJobPosting : EntityBase<int>, IEntity
+    public class Question: EntityBase<int>, IEntity
     {
-
-        public JobApplication JobApplication{ get; set; }
-        public int JobApplicationID { get; set; }
+        public string Content { get; set; }
         public JobPosting JobPosting { get; set; }
         public int JobPostingID { get; set; }
     }

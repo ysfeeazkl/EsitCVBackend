@@ -10,5 +10,7 @@ namespace EsitCV.Entities.Concrete.Disableds
     public class Disability: EntityBase<int>,IEntity
     {
         public string Name { get; set; }
+        public int PercentageOfObstacles { get; set; }
+
+
     }
-}

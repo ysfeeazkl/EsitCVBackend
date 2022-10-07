@@ -21,10 +21,16 @@ namespace EsitCV.Entities.Concrete
         public DateTime Birthday { get; set; }
         public DateTime LastLogin { get; set; }
 
-        //
+        //     
 
         public UserDisability UserDisability { get; set; }
         public int UserDisabilityID { get; set; }
+
+        public int UserPictureID { get; set; }
+        public UserPicture UserPicture { get; set; }
+
+        public UserProfile UserProfile { get; set; }
+        public int UserProfileID { get; set; }
 
         public ICollection<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
         public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }

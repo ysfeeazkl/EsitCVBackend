@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete.Features
 {
-    public class Hobbies : EntityBase<int>, IFeatures, IEntity
+    public class Hobbies : FeaturesBase<int>, IFeatures, IEntity
     {
+        public string Name { get; set; }
     }
 }

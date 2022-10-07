@@ -8,7 +8,15 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete.Features
 {
-    public class Education : EntityBase<int>, IFeatures, IEntity
+    public class Education : FeaturesBase<int>, IFeatures, IEntity
     {
+        public string InstitutionName { get; set; }
+        public string Content { get; set; }
+        public string Activity { get; set; }
+        public string Degree { get; set; }
+        public string EducationCategory { get; set; } //örnek işletme
+        public DateTime StartDate { get; set; }
+        public DateTime FinishDate { get; set; }
+
     }
 }

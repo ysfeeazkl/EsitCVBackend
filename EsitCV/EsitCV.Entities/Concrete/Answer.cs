@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete
 {
-    public class CurriculumVitae : EntityBase<int>, IEntity 
+    public class Answer: EntityBase<int>, IEntity
     {
-
+        public string Content { get; set; }
+        public Question Question { get; set; }
+        public int QuestionID { get; set; }
     }
 }

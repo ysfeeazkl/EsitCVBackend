@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete
 {
-    public class JobApplication : EntityBase<int>, IEntity // iş ilanı sorularına verilen cevaplar gibi bişi yapılcak
+    public class UserPicture: EntityBase<int>, IEntity
     {
+        public string? FileName { get; set; }
+        public string? FilePath { get; set; }
         public User User { get; set; }
         public int UserID { get; set; }
-     
-
-
     }
 }
