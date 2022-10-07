@@ -10,7 +10,8 @@ namespace EsitCV.Business.AbstractUtilities
 {
     public interface IJwtHelper
     {
-        AccessToken CreateToken(User user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken);
+        AccessToken CreateTokenForUser(User user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken);
+        AccessToken CreateTokenForCompany(Company user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken);
 
     }
 }

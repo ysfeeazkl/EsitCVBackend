@@ -27,12 +27,12 @@ namespace EsitCV.Business.Utilities
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
 
-        public AccessToken CreateTokenForUser(User user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken)
+        public AccessToken CreateTokenForCompany(Company company, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken)
         {
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration + 300);
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
-            var jwt = CreateJwtSecurityToken(user, signingCredentials, operationClaims, isRefreshToken);
+            var jwt = CreateJwtSecurityTokenForCompany(company, signingCredentials, operationClaims, isRefreshToken);
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var token = jwtSecurityTokenHandler.WriteToken(jwt);
             return new AccessToken()
@@ -42,7 +42,22 @@ namespace EsitCV.Business.Utilities
             };
         }
 
-        public JwtSecurityToken CreateJwtSecurityToken(User user, SigningCredentials signingCredentials, IEnumerable<OperationClaim> operationClaims, bool refreshToken)
+        public AccessToken CreateTokenForUser(User user, IEnumerable<OperationClaim> operationClaims, bool isRefreshToken)
+        {
+            _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration + 300);
+            var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
+            var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
+            var jwt = CreateJwtSecurityTokenForUser(user, signingCredentials, operationClaims, isRefreshToken);
+            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var token = jwtSecurityTokenHandler.WriteToken(jwt);
+            return new AccessToken()
+            {
+                Token = token,
+                TokenExpiration = _accessTokenExpiration,
+            };
+        }
+
+        public JwtSecurityToken CreateJwtSecurityTokenForCompany(Company company, SigningCredentials signingCredentials, IEnumerable<OperationClaim> operationClaims, bool refreshToken)
         {
             var jwt = new JwtSecurityToken
             (
@@ -50,12 +65,37 @@ namespace EsitCV.Business.Utilities
                 audience: _tokenOptions.Audience,
                 expires: refreshToken == false ? _accessTokenExpiration : DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration + 100),
                 notBefore: DateTime.Now,
-                claims: SetClaims(user, operationClaims),
+                claims: SetClaimsForCompany(company, operationClaims),
                 signingCredentials: signingCredentials
             );
             return jwt;
         }
-        public IEnumerable<Claim> SetClaims(User user, IEnumerable<OperationClaim> operationClaims)
+        public IEnumerable<Claim> SetClaimsForCompany(Company company, IEnumerable<OperationClaim> operationClaims)
+        {
+            var claims = new List<Claim>();
+            claims.AddNameIdentifier(company.ID.ToString());
+            claims.AddEmail(company.EmailAddress);
+            claims.AddPhone(company.PhoneNumber);
+            claims.AddIpAddress(company.IpAddress!);
+            claims.AddIsDeletedStatus(company.IsDeleted);
+            claims.AddRoles(operationClaims.Select(a => a.Name).ToArray());
+            return claims;
+        }
+
+        public JwtSecurityToken CreateJwtSecurityTokenForUser(User user, SigningCredentials signingCredentials, IEnumerable<OperationClaim> operationClaims, bool refreshToken)
+        {
+            var jwt = new JwtSecurityToken
+            (
+                issuer: _tokenOptions.Issuer,
+                audience: _tokenOptions.Audience,
+                expires: refreshToken == false ? _accessTokenExpiration : DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration + 100),
+                notBefore: DateTime.Now,
+                claims: SetClaimsForUser(user, operationClaims),
+                signingCredentials: signingCredentials
+            );
+            return jwt;
+        }
+        public IEnumerable<Claim> SetClaimsForUser(User user, IEnumerable<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
             claims.AddNameIdentifier(user.ID.ToString());

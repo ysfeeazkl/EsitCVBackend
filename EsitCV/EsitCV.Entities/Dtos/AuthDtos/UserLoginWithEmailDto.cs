@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.AuthDtos
 {
-    internal class UserLoginWithEmailDto
+    public class UserLoginWithEmailDto
     {
+        public string Password { get; set; }
+        public string EmailAddress { get; set; }
     }
 }

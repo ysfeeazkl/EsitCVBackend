@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
     <Folder Include="AutoMapper\" />
-    <Folder Include="Concrete\" />
     <Folder Include="ValidationRules\" />
   </ItemGroup>
 
