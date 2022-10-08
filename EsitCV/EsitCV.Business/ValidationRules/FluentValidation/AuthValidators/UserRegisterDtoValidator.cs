@@ -18,7 +18,7 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.AuthValidators
             RuleFor(a => a.Password).Length(8, 50).WithMessage("Şifre alanı minimum 8 maksimum 50 karakter olmalıdır.");
             RuleFor(a => a.PhoneNumber).MinimumLength(5).WithMessage("Telefon alanı minimum 5 karakter olmalıdır.");
             RuleFor(a => a.UserName).Length(3, 15).WithMessage("kullanıcı adı alanı minimum 3 maksimum 50 karakter olmalıdır.");
-            RuleFor(a => a.Birthday).NotNull();
+            RuleFor(a => a.Birth).NotNull();
 
             RuleFor(x => x.Password)
           .NotEmpty().WithMessage("Parola alanı boş bırakılamaz.")
