@@ -13,5 +13,6 @@ namespace EsitCV.Entities.Dtos.AuthDtos
         public string Password { get; set; }
         public string EmailAddress { get; set; }
         public string TaxNumber { get; set; }
+        public string YearOfFoundation { get; set; }
     }
 }

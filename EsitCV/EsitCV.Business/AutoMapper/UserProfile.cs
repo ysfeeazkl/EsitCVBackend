@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EsitCV.Entities.Concrete;
 using EsitCV.Entities.Dtos.AuthDtos;
+using EsitCV.Entities.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace EsitCV.Business.AutoMapper
         {
             CreateMap<UserLoginWithEmailDto, User>();
             CreateMap<UserRegisterDto, User>();
+            CreateMap<UserDto, User>();
         }
     }
 }

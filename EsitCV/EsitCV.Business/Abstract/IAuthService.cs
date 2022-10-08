@@ -21,7 +21,7 @@ namespace EsitCV.Business.Abstract
         Task<IDataResult> CreateAccessTokenByCompanyIdAsync(int companyId, bool isRefresh);
         Task<IDataResult> CompanyRegisterAsync(CompanyRegisterDto companyRegisterDto);
         Task<IDataResult> UserRegisterAsync(UserRegisterDto userRegisterDto);
-        Task<IDataResult> CompanyLoginWithEmailAsync(CompanyLoginWithEmailDto CompanyLoginWithEmailDto);
-        Task<IDataResult> UserLoginWithEmailAsync(UserLoginWithEmailDto UserLoginWithEmailDto);
+        Task<IDataResult> CompanyLoginWithEmailAsync(CompanyLoginWithEmailDto companyLoginWithEmailDto);
+        Task<IDataResult> UserLoginWithEmailAsync(UserLoginWithEmailDto userLoginWithEmailDto);
     }
 }

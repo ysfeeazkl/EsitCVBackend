@@ -27,6 +27,7 @@ namespace EsitCV.Data.Concrete.Context
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyAndOperationClaim> CompanyAndOperationClaims { get; set; }
         public DbSet<CompanyPicture> CompanyPictures { get; set; }
+        public DbSet<CompanyToken> CompanyTokens { get; set; }
         public DbSet<CurriculumVitae> CurriculumVitaes { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
         public DbSet<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
@@ -39,6 +40,7 @@ namespace EsitCV.Data.Concrete.Context
         public DbSet<UserDisability> UserDisabilitys { get; set; }
         public DbSet<UserPicture> UserPictures { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<UserToken> UserTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
