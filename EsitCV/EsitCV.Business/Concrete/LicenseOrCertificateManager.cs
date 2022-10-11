@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 using EsitCV.Entities.ComplexTypes;
 using EsitCV.Shared.Utilities.Results.Abstract;
 using EsitCV.Business.Abstract;
+using EsitCV.Business.Utilities;
+using EsitCV.Data.Concrete.Context;
+using AutoMapper;
 
 namespace EsitCV.Business.Concrete
 {
-    public class LicenseOrCertificateManager : ILicenseOrCertificateService, ManagerBase
+    public class LicenseOrCertificateManager : ManagerBase, ILicenseOrCertificateService
     {
+        public LicenseOrCertificateManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
+        {
+
+        }
         
     }
 }

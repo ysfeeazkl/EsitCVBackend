@@ -7,11 +7,16 @@ using EsitCV.Entities.ComplexTypes;
 using EsitCV.Shared.Utilities.Results.Abstract;
 using EsitCV.Business.Abstract;
 using EsitCV.Business.Utilities;
+using AutoMapper;
+using EsitCV.Data.Concrete.Context;
 
 namespace EsitCV.Business.Concrete
 {
     public class CirriculumVitaeManager: ManagerBase, ICirriculumVitaeService
     {
-      
+        public CirriculumVitaeManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
+        {
+
+        }
     }
 }

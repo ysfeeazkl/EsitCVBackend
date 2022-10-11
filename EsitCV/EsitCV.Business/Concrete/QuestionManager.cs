@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 using EsitCV.Entities.ComplexTypes;
 using EsitCV.Shared.Utilities.Results.Abstract;
 using EsitCV.Business.Abstract;
+using EsitCV.Business.Utilities;
+using AutoMapper;
+using EsitCV.Data.Concrete.Context;
 
 namespace EsitCV.Business.Concrete
 {
-    public class QuestionManager :IQuestionService, ManagerBase
+    public class QuestionManager : ManagerBase, IQuestionService
     {
+        public QuestionManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
+        {
+
+        }
     }
 }
