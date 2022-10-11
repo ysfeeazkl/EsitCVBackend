@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Business.Abstract
 {
-    public interface IJobApplication
+    public interface IJobApplicationService
     {
         Task<IDataResult> AddAsync();
         Task<IDataResult> UpdateAsync();

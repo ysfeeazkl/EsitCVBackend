@@ -8,7 +8,7 @@ using EsitCV.Shared.Utilities.Results.Abstract;
 
 namespace EsitCV.Business.Abstract
 {
-    public interface IHobbie
+    public interface IHobbieService
     {
         Task<IDataResult> AddAsync();
         Task<IDataResult> UpdateAsync();
