@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.JobApplicationAndJobPostingDtos
 {
-    internal class JobApplicationAndJobPostingAddDto
+    public class JobApplicationAndJobPostingAddDto
     {
+        public int JobApplicationID { get; set; }
+        public int JobPostingID { get; set; }
     }
 }

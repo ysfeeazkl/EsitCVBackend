@@ -1,4 +1,5 @@
 ﻿using EsitCV.Entities.ComplexTypes;
+using EsitCV.Entities.Dtos.JobApplicationDtos;
 using EsitCV.Shared.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace EsitCV.Business.Abstract
 {
     public interface IJobApplicationService
     {
-        Task<IDataResult> AddAsync();
-        Task<IDataResult> UpdateAsync();
+        Task<IDataResult> AddAsync(JobApplicationAddDto jobApplicationAddDto);
+        Task<IDataResult> UpdateAsync(JobApplicationUpdateDto jobApplicationUpdateDto);
         Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy);
         Task<IDataResult> GetByIdAsync(int id);
         Task<IDataResult> GetAllByUserIdAsync(int id);

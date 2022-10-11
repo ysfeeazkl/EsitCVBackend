@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.AnswerDtos
 {
-    internal class AnswerAddDto
+    public class AnswerAddDto
     {
+        public string Content { get; set; }
+        public int QuestionID { get; set; }
     }
 }
