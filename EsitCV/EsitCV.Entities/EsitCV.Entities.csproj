@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Dtos\AnswerDtos\" />
+    <Folder Include="Dtos\CompanyPicuteDtos\" />
+    <Folder Include="Dtos\JobApplicationAndJobPostingDtos\" />
+    <Folder Include="Dtos\LocationDtos\" />
+    <Folder Include="Dtos\UserProfileDtos\" />
+    <Folder Include="Dtos\UserPictureDtos\" />
+    <Folder Include="Dtos\UserDisabilityDtos\" />
+    <Folder Include="Dtos\QuestionDtos\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
 

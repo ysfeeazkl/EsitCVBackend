@@ -9,6 +9,9 @@ namespace EsitCV.Entities.Concrete
 {
     public class CurriculumVitae : EntityBase<int>, IEntity 
     {
-
+        public string? FileName { get; set; }
+        public string? FilePath { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.7.13.18" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.9.67" />
     <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.17.2" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
@@ -22,6 +24,24 @@
     <ProjectReference Include="..\EsitCV.Data\EsitCV.Data.csproj" />
     <ProjectReference Include="..\EsitCV.Entities\EsitCV.Entities.csproj" />
     <ProjectReference Include="..\EsitCV.Shared\EsitCV.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ValidationRules\FluentValidation\AnswerValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\CirriculumVitaeValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\CompanyPicuteValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\CompanyTokenValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\CompanyValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\JobApplicationAndJobPostingValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\JobApplicationValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\JobPostingValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\LocationValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\QuestionValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\UserDisabilityValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\UserPictureValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\UserProfileValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\UserTokenValidators\" />
+    <Folder Include="ValidationRules\FluentValidation\UserValidators\" />
   </ItemGroup>
 
 </Project>
