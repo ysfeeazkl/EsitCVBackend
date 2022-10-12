@@ -28,15 +28,10 @@
 
   <ItemGroup>
     <Folder Include="ValidationRules\FluentValidation\AnswerValidators\" />
-    <Folder Include="ValidationRules\FluentValidation\CirriculumVitaeValidators\" />
     <Folder Include="ValidationRules\FluentValidation\CompanyPicuteValidators\" />
     <Folder Include="ValidationRules\FluentValidation\CompanyTokenValidators\" />
     <Folder Include="ValidationRules\FluentValidation\CompanyValidators\" />
-    <Folder Include="ValidationRules\FluentValidation\JobApplicationAndJobPostingValidators\" />
-    <Folder Include="ValidationRules\FluentValidation\JobApplicationValidators\" />
-    <Folder Include="ValidationRules\FluentValidation\JobPostingValidators\" />
     <Folder Include="ValidationRules\FluentValidation\LocationValidators\" />
-    <Folder Include="ValidationRules\FluentValidation\QuestionValidators\" />
     <Folder Include="ValidationRules\FluentValidation\UserDisabilityValidators\" />
     <Folder Include="ValidationRules\FluentValidation\UserPictureValidators\" />
     <Folder Include="ValidationRules\FluentValidation\UserProfileValidators\" />

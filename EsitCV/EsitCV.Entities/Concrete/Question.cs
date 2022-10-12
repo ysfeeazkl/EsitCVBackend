@@ -12,5 +12,6 @@ namespace EsitCV.Entities.Concrete
         public string Content { get; set; }
         public JobPosting JobPosting { get; set; }
         public int JobPostingID { get; set; }
+    
     }
 }

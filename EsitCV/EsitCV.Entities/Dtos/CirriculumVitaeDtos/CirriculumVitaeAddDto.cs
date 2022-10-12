@@ -10,7 +10,7 @@ namespace EsitCV.Entities.Dtos.CirriculumVitaeDtos
     public class CirriculumVitaeAddDto
     {
       
-        public int CirriculumVitaeId { get; set; }
+        public int UserID { get; set; }
         public IFormFile File { get; set; }
     }
 }

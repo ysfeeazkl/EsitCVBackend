@@ -10,5 +10,6 @@ namespace EsitCV.Entities.Dtos.AnswerDtos
     {
         public string Content { get; set; }
         public int QuestionID { get; set; }
+        public int UserID { get; set; }
     }
 }

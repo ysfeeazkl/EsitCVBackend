@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EsitCV.Entities.ComplexTypes;
+using EsitCV.Entities.Dtos.CirriculumVitaeDtos;
 using EsitCV.Shared.Utilities.Results.Abstract;
 
 namespace EsitCV.Business.Abstract
 {
     public interface ICirriculumVitaeService
     {
-        Task<IDataResult> AddAsync();
-        Task<IDataResult> UpdateAsync();
+        Task<IDataResult> AddAsync(CirriculumVitaeAddDto cirriculumVitaeAddDto);
+        Task<IDataResult> UpdateAsync(CirriculumVitaeUpdateDto cirriculumVitaeUpdateDto);
         Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy);
         Task<IDataResult> GetByIdAsync(int id);
         Task<IDataResult> GetByUserIdAsync(int id);

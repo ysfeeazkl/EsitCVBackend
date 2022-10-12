@@ -8,5 +8,7 @@ namespace EsitCV.Entities.Dtos.QuestionDtos
 {
     public class QuestionAddDto
     {
+        public string Content { get; set; }
+        public int JobPostingID { get; set; }
     }
 }

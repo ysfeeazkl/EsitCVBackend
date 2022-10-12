@@ -11,7 +11,7 @@ namespace EsitCV.Entities.Concrete
     {
         public string? FileName { get; set; }
         public string? FilePath { get; set; }
-        public int UserId { get; set; }
+        public int UserID { get; set; }
         public User User { get; set; }
     }
 }
