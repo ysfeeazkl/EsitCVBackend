@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete.Disableds
 {
-    public class Disability: EntityBase<int>,IEntity
+    public class Disability : EntityBase<int>, IEntity
     {
         public string Name { get; set; }
         public int PercentageOfObstacles { get; set; }
 
 
     }
+}

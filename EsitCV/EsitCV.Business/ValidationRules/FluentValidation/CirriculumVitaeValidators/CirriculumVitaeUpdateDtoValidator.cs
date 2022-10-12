@@ -1,4 +1,4 @@
-﻿using EsitCV.Entities.Dtos.CirriculumVitaeDtos;
+﻿using EsitCV.Entities.Dtos.CurriculumVitaeDtos;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EsitCV.Business.ValidationRules.FluentValidation.CirriculumVitaeValidators
+namespace EsitCV.Business.ValidationRules.FluentValidation.CurriculumVitaeValidators
 {
   
 
-    public class CirriculumVitaeUpdateDtoValidator : AbstractValidator<CirriculumVitaeUpdateDto>
+    public class CurriculumVitaeUpdateDtoValidator : AbstractValidator<CurriculumVitaeUpdateDto>
     {
-        public CirriculumVitaeUpdateDtoValidator()
+        public CurriculumVitaeUpdateDtoValidator()
         {
             RuleFor(a => a.ID).GreaterThan(0);
             RuleFor(a => a.UserID).GreaterThan(0);

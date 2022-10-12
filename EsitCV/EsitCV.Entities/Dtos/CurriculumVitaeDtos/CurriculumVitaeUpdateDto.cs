@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EsitCV.Entities.Dtos.CirriculumVitaeDtos
+namespace EsitCV.Entities.Dtos.CurriculumVitaeDtos
 {
-    public class CirriculumVitaeUpdateDto
+    public class CurriculumVitaeUpdateDto
     {
         public int ID { get; set; }
-        public int UserID { get; set; }
         public IFormFile File { get; set; }
     }
 }

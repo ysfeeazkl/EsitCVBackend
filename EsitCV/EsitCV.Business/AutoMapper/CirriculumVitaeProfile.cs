@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using EsitCV.Entities.Concrete;
-using EsitCV.Entities.Dtos.CirriculumVitaeDtos;
+using EsitCV.Entities.Dtos.CurriculumVitaeDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Business.AutoMapper
 {
-    public class CirriculumVitaeProfile : Profile
+    public class CurriculumVitaeProfile : Profile
     {
-        public CirriculumVitaeProfile()
+        public CurriculumVitaeProfile()
         {
-            CreateMap<CirriculumVitaeAddDto, CurriculumVitae>();
-            CreateMap<CirriculumVitaeUpdateDto, CurriculumVitae>();
+            CreateMap<CurriculumVitaeAddDto, CurriculumVitae>();
+            CreateMap<CurriculumVitaeUpdateDto, CurriculumVitae>();
         }
     }
 }

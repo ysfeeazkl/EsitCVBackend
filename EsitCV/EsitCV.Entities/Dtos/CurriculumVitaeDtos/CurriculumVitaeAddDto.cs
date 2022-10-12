@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EsitCV.Entities.Dtos.CirriculumVitaeDtos
+namespace EsitCV.Entities.Dtos.CurriculumVitaeDtos
 {
-    public class CirriculumVitaeAddDto
+    public class CurriculumVitaeAddDto
     {
       
         public int UserID { get; set; }

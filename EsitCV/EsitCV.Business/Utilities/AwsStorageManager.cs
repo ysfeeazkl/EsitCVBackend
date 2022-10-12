@@ -15,7 +15,7 @@ using EsitCV.Shared.Utilities.Results.ComplexTypes;
 
 namespace EsitCV.Business.Utilities
 {
-    public class AwsStorageManager : IAwsStorageService
+    public  class AwsStorageManager : IAwsStorageService
     {
         private readonly AmazonS3Client amazonS3Client;
 
@@ -42,7 +42,7 @@ namespace EsitCV.Business.Utilities
             amazonS3Client = new AmazonS3Client(credentials, amazonConfig);
         }
 
-        public async Task<IDataResult> UploadFileAsync(IFormFile file)
+        public  async Task<IDataResult> UploadFileAsync(IFormFile file)
         {
             try
             {
@@ -132,7 +132,7 @@ namespace EsitCV.Business.Utilities
             }
             catch (AmazonS3Exception ex)
             {
-                return new DataResult(ResultStatus.Success, ex.Message, ex.StatusCode);
+                return new DataResult(ResultStatus.Error, ex.Message, ex.StatusCode);
 
             }
             catch (Exception ex)
