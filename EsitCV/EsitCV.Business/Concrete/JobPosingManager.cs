@@ -42,6 +42,7 @@ namespace EsitCV.Business.Concrete
 
             jobPosting.CompanyID = companyIsExist.ID;
             jobPosting.Company = companyIsExist;
+
            
             await DbContext.JobPostings.AddAsync(jobPosting);
             await DbContext.SaveChangesAsync();

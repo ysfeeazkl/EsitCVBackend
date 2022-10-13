@@ -11,5 +11,7 @@ namespace EsitCV.Entities.Dtos.JobApplicationDtos
         public int ID { get; set; }
         public int UserID { get; set; }
         public int CurriculumVitaeID { get; set; }
+        public int JobPostingID { get; set; }
+
     }
 }

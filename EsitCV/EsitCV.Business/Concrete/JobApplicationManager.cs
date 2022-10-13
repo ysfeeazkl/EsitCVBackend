@@ -32,14 +32,16 @@ namespace EsitCV.Business.Concrete
         {
             ValidationTool.Validate(new JobApplicationAddDtoValidator(), jobApplicationAddDto);
 
-            var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.CurriculumVitaeID);
-            if (cvIsExist is null)
-                return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
             var userIsExist = await DbContext.Users.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.UserID);
             if (userIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir kullanıcı bulunamadı");
-
-
+            var jobPosting = await DbContext.JobPostings.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.JobPostingID);
+            if (jobPosting is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir iş ilanı bulunamadı");
+            var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.CurriculumVitaeID);
+            if (cvIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
+          
             var jobApplication = Mapper.Map<JobApplication>(jobApplicationAddDto);
             jobApplication.CreatedDate = DateTime.Now;
             jobApplication.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
@@ -48,7 +50,12 @@ namespace EsitCV.Business.Concrete
             jobApplication.UserID = userIsExist.ID;
             jobApplication.CurriculumVitaeID = cvIsExist.ID;
             jobApplication.CurriculumVitae= cvIsExist;
+            jobApplication.JobPostingID = jobPosting.ID;
+            jobApplication.JobPosting= jobPosting;
 
+            jobPosting.JobApplications.Add(jobApplication);
+
+            DbContext.JobPostings.Update(jobPosting);
             await DbContext.JobApplications.AddAsync(jobApplication);
             await DbContext.SaveChangesAsync();
 

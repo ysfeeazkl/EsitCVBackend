@@ -14,9 +14,11 @@ namespace EsitCV.Entities.Concrete
 
         public CurriculumVitae CurriculumVitae { get; set; }
         public int CurriculumVitaeID { get; set; }
+        public JobPosting JobPosting{ get; set; }
+        public int JobPostingID{ get; set; }
 
-        public ICollection<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
         public ICollection<Answer> Answers { get; set; }
+
 
     }
 }

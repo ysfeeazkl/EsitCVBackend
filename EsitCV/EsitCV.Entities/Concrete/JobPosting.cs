@@ -22,8 +22,9 @@ namespace EsitCV.Entities.Concrete
         public Company Company { get; set; }
         public int CompanyID { get; set; }
 
-        public ICollection<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
         public ICollection<Question> Questions{ get; set; }
+        public ICollection<JobApplication> JobApplications{ get; set; }
+
 
     }
 }

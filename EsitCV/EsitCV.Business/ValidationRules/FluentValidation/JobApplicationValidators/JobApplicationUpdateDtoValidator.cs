@@ -17,6 +17,8 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.JobApplicationValidat
             RuleFor(a => a.ID).GreaterThan(0);
             RuleFor(a => a.UserID).GreaterThan(0).WithMessage("kullanıcı alanı boş geçilmez");
             RuleFor(a => a.CurriculumVitaeID).GreaterThan(0).WithMessage("cv alanı boş geçilmez");
+            RuleFor(a => a.JobPostingID).GreaterThan(0).WithMessage("iş ilanı alanı boş geçilmez");
+
 
         }
     }
