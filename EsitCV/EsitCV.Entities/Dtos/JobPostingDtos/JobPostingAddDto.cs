@@ -19,7 +19,7 @@ namespace EsitCV.Entities.Dtos.JobPostingDtos
         public string Language { get; set; }
         public TypeOfWork TypeOfWork { get; set; }
         public int CompanyID { get; set; }
-        public List<JobPostingQuestionAddDto> Questions { get; set; }
+        public List<JobPostingQuestionAddDto>? Questions { get; set; }
 
     }
 }
