@@ -25,6 +25,10 @@ namespace EsitCV.Entities.Concrete
         public ICollection<Question> Questions{ get; set; }
         public ICollection<JobApplication> JobApplications{ get; set; }
 
-
+        public JobPosting()
+        {
+            Questions=new List<Question>();
+            JobApplications = new List<JobApplication>();
+        }
     }
 }
