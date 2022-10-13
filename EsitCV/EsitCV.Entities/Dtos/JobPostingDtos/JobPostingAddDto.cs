@@ -1,4 +1,6 @@
 ﻿using EsitCV.Entities.ComplexTypes;
+using EsitCV.Entities.Concrete;
+using EsitCV.Entities.Dtos.QuestionDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,7 @@ namespace EsitCV.Entities.Dtos.JobPostingDtos
         public string Language { get; set; }
         public TypeOfWork TypeOfWork { get; set; }
         public int CompanyID { get; set; }
+        public List<JobPostingQuestionAddDto> Questions { get; set; }
 
     }
 }

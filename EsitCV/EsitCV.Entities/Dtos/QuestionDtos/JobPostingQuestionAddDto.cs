@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.QuestionDtos
 {
-    public class QuestionUpdateDto
+    public class JobPostingQuestionAddDto
     {
-        public int ID { get; set; }
         public string Content { get; set; }
     }
 }

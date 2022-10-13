@@ -17,6 +17,7 @@ using EsitCV.Shared.Utilities.Results.ComplexTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using EsitCV.Entities.Concrete;
+using EsitCV.Entities.Dtos.QuestionDtos;
 
 namespace EsitCV.Business.Concrete
 {
@@ -28,7 +29,7 @@ namespace EsitCV.Business.Concrete
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<IDataResult> AddAsync(JobPostingAddDto jobPostingAddDto)
+        public async Task<IDataResult> AddAsync(JobPostingAddDto jobPostingAddDto) //iş ilanı sorularını da koy
         {
             ValidationTool.Validate(new JobPostingAddDtoValidator(), jobPostingAddDto);
 
@@ -43,9 +44,25 @@ namespace EsitCV.Business.Concrete
             jobPosting.CompanyID = companyIsExist.ID;
             jobPosting.Company = companyIsExist;
 
-           
             await DbContext.JobPostings.AddAsync(jobPosting);
             await DbContext.SaveChangesAsync();
+
+            if (jobPostingAddDto.Questions.Count() > 0)                                                                                                         //evde ayık kafayla tekrar bakılcak
+            {                                                                                                                                                   //evde ayık kafayla tekrar bakılcak
+                var questions = Mapper.Map<List<Question>>(jobPostingAddDto.Questions);                                                                         //evde ayık kafayla tekrar bakılcak
+                                                                                                                                                                //evde ayık kafayla tekrar bakılcak
+                foreach (var question in questions)                                                                                                             //evde ayık kafayla tekrar bakılcak
+                {                                                                                                                                               //evde ayık kafayla tekrar bakılcak
+                    question.JobPosting = jobPosting;                                                                                                           //evde ayık kafayla tekrar bakılcak
+                    question.JobPostingID = jobPosting.ID;                                                                                                      //evde ayık kafayla tekrar bakılcak
+                                                                                                                                                                //evde ayık kafayla tekrar bakılcak
+                    await DbContext.Questions.AddAsync(question);                                                                                               //evde ayık kafayla tekrar bakılcak
+                    await Task.Delay(10);                                                                                                                       //evde ayık kafayla tekrar bakılcak
+                }                                                                                                                                               //evde ayık kafayla tekrar bakılcak
+                    await DbContext.SaveChangesAsync();                                                                                                         //evde ayık kafayla tekrar bakılcak
+                return new DataResult(ResultStatus.Success, "İş ilanı ve soruları başarıyla Eklendi.", new List<object> { jobPosting, questions });             //evde ayık kafayla tekrar bakılcak
+                                                                                                                                                                //evde ayık kafayla tekrar bakılcak
+            }                                                                                                                                                   //evde ayık kafayla tekrar bakılcak
 
             return new DataResult(ResultStatus.Success, "İş ilanı başarıyla Eklendi.", jobPosting);
         }
