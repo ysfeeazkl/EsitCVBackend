@@ -2,6 +2,7 @@
 using EsitCV.Shared.Entities.Abstrack;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,9 +32,14 @@ namespace EsitCV.Entities.Concrete
 
         public UserProfile UserProfile { get; set; }
         public int UserProfileID { get; set; }
+        public CurriculumVitae  CurriculumVitae{ get; set; }
+        public int CurriculumVitaeID { get; set; }
 
         public ICollection<JobApplication> JobApplications { get; set; }
         public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
+        public ICollection<UserToken> UserTokens { get; set; }
+
+        [NotMapped]
         public ICollection<IFeatures> Features { get; set; }
 
     }

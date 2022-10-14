@@ -149,7 +149,7 @@ namespace EsitCV.Business.Concrete
             CompanyAndOperationClaim companyOperationClaim = new CompanyAndOperationClaim
             {
                 CompanyID = company.ID,
-                OperationClaimID = 2 //Company
+                OperationClaimID = 3 //Company
             };
             await DbContext.CompanyAndOperationClaims.AddAsync(companyOperationClaim);
             await DbContext.SaveChangesAsync();
@@ -194,7 +194,7 @@ namespace EsitCV.Business.Concrete
             UserAndOperationClaim userOperationClaim = new UserAndOperationClaim
             {
                 UserID = user.ID,
-                OperationClaimID = 1 //user
+                OperationClaimID = 2 //user
             };
             await DbContext.UserAndOperationClaims.AddAsync(userOperationClaim);
             await DbContext.SaveChangesAsync();

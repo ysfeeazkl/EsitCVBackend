@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Data.Concrete.Mappings
 {
-    public class CurriculumVitaeMap : IEntityTypeConfiguration<CurriculumVitae>
+    public class UserDisabilityMap : IEntityTypeConfiguration<UserDisability>
     {
-        public void Configure(EntityTypeBuilder<CurriculumVitae> builder)
+        public void Configure(EntityTypeBuilder<UserDisability> builder)
         {
             builder.HasKey(u => u.ID);
             builder.Property(u => u.ID).ValueGeneratedOnAdd();
-            builder.Property(u => u.FileUrl).IsRequired();
-       
-            builder.ToTable("CurriculumVitaes");
+            builder.Property(u => u.UserId).IsRequired();
+
+            builder.ToTable("UserDisabilities");
         }
     }
 }

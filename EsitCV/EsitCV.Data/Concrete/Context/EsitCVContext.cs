@@ -1,4 +1,5 @@
-﻿using EsitCV.Entities.Concrete;
+﻿using EsitCV.Data.Concrete.Mappings;
+using EsitCV.Entities.Concrete;
 using EsitCV.Entities.Concrete.Disableds;
 using EsitCV.Entities.Concrete.Features;
 using Microsoft.EntityFrameworkCore;
@@ -12,17 +13,17 @@ namespace EsitCV.Data.Concrete.Context
 {
     public class EsitCVContext : DbContext
     {
-        public DbSet<Disability> Disabilities { get; set; }
-        public DbSet<About> Abouts { get; set; }
-        public DbSet<AreasOfInterest> AreasOfInterests { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<CurrentProject> CurrentProjects { get; set; }
-        public DbSet<Education> Educations { get; set; }
-        public DbSet<Hobbie> Hobbies { get; set; }
-        public DbSet<Language> Language { get; set; }
-        public DbSet<LicenseOrCertificate> LicenseOrCertificates { get; set; }
-        public DbSet<Organization> Organizations { get; set; }      
-        public DbSet<WorkExperience> WorkExperiences { get; set; }
+        //public DbSet<Disability> Disabilities { get; set; }
+        //public DbSet<About> Abouts { get; set; }
+        //public DbSet<AreasOfInterest> AreasOfInterests { get; set; }
+        //public DbSet<Course> Courses { get; set; }
+        //public DbSet<CurrentProject> CurrentProjects { get; set; }
+        //public DbSet<Education> Educations { get; set; }
+        //public DbSet<Hobbie> Hobbies { get; set; }
+        //public DbSet<Language> Language { get; set; }
+        //public DbSet<LicenseOrCertificate> LicenseOrCertificates { get; set; }
+        //public DbSet<Organization> Organizations { get; set; }
+        //public DbSet<WorkExperience> WorkExperiences { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyAndOperationClaim> CompanyAndOperationClaims { get; set; }
@@ -43,7 +44,23 @@ namespace EsitCV.Data.Concrete.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.ApplyConfiguration(new AnswerMap());
+            modelBuilder.ApplyConfiguration(new CompanyAndOperationClaimMap());
+            modelBuilder.ApplyConfiguration(new CompanyMap());
+            modelBuilder.ApplyConfiguration(new CompanyPictureMap());
+            modelBuilder.ApplyConfiguration(new CompanyTokenMap());
+            modelBuilder.ApplyConfiguration(new CurriculumVitaeMap());
+            modelBuilder.ApplyConfiguration(new JobApplicationMap());
+            modelBuilder.ApplyConfiguration(new JobPostingMap());
+            modelBuilder.ApplyConfiguration(new LocationMap());
+            modelBuilder.ApplyConfiguration(new OperationClaimMap());
+            modelBuilder.ApplyConfiguration(new QuestionMap());
+            modelBuilder.ApplyConfiguration(new UserAndOperationClaimMap());
+            modelBuilder.ApplyConfiguration(new UserDisabilityMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new UserPictureMap());
+            modelBuilder.ApplyConfiguration(new UserTokenMap());
+        
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

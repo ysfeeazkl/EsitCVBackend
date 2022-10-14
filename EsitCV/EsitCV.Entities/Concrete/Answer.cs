@@ -12,7 +12,7 @@ namespace EsitCV.Entities.Concrete
         public string Content { get; set; }
         public Question Question { get; set; }
         public int QuestionID { get; set; }
-        public User User { get; set; }
-        public int UserID { get; set; }
+        public JobApplication JobApplication { get; set; }
+        public int JobApplicationID { get; set; }
     }
 }

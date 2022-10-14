@@ -12,5 +12,6 @@ namespace EsitCV.Entities.Concrete
         public string Name { get; set; }
 
         public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
+        public ICollection<CompanyAndOperationClaim> CompanyAndOperationClaims { get; set; }
     }
 }

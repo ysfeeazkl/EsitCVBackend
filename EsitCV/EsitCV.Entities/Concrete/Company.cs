@@ -21,13 +21,14 @@ namespace EsitCV.Entities.Concrete
         public DateTime YearOfFoundation { get; set; }
         public DateTime LastLogin { get; set; }
 
-        public Location Location { get; set; }
+        public Location? Location { get; set; }
         public int LocationID { get; set; }
         public CompanyPicture CompanyPicture { get; set; }
         public int CompanyPictureID { get; set; }
 
         public ICollection<JobPosting> JobPostings { get; set; }
-
+        public ICollection<CompanyAndOperationClaim> CompanyAndOperationClaims { get; set; }
+        public ICollection<CompanyToken> CompanyTokens { get; set; }
 
 
 

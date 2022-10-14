@@ -10,7 +10,7 @@ namespace EsitCV.Entities.Concrete
     public class UserPicture: EntityBase<int>, IEntity
     {
         public string? FileName { get; set; }
-        public string? FilePath { get; set; }
+        public string? FileUrl { get; set; }
         public User User { get; set; }
         public int UserID { get; set; }
     }

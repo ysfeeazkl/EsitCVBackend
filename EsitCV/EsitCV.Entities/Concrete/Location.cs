@@ -12,5 +12,8 @@ namespace EsitCV.Entities.Concrete
         public string Country { get; set; }
         public string Province { get; set; }
         public string District { get; set; }
+        public Company Company { get; set; }
+        public int CompanyID { get; set; }
+
     }
 }
