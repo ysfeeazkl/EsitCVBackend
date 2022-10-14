@@ -32,7 +32,7 @@ namespace EsitCV.Entities.Concrete
         public UserProfile UserProfile { get; set; }
         public int UserProfileID { get; set; }
 
-        public ICollection<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
+        public ICollection<JobApplication> JobApplications { get; set; }
         public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
         public ICollection<IFeatures> Features { get; set; }
 

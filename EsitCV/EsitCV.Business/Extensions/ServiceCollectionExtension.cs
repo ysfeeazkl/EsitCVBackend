@@ -1,6 +1,7 @@
 ﻿
+using EsitCV.Business.Abstract;
 using EsitCV.Business.AbstractUtilities;
-
+using EsitCV.Business.Concrete;
 using EsitCV.Business.Utilities;
 using EsitCV.Data.Concrete.Context;
 using Microsoft.AspNetCore.Builder;
@@ -20,10 +21,20 @@ namespace EsitCV.Business.Extensions
         {
             services.AddDbContext<EsitCVContext>(contextLifetime: ServiceLifetime.Transient, optionsLifetime: ServiceLifetime.Transient);
 
+            services.AddScoped<IAuthService, AuthManager>();
+            services.AddScoped<IJwtHelper, JwtHelper>();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<ILoggerService, LoggerManager>();
 
+
+            services.AddScoped<ICurriculumVitaeService, CurriculumVitaeManager>();
+            services.AddScoped<IAwsStorageService, AwsStorageManager>();
+            services.AddScoped<IJobPosingService, JobPosingManager>();
+            services.AddScoped<IJobApplicationService, JobApplicationManager>();
             services.AddScoped<IJwtHelper, JwtHelper>();
+            services.AddScoped<IQuestionService, QuestionManager>();
+            services.AddScoped<IAnswerService, AnswerManager>();
 
 
             return services;

@@ -18,6 +18,30 @@ namespace EsitCV.Business.Concrete
         {
 
         }
-       
+
+        public Task<IDataResult> AddAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> DeleteByFileNameAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> GetByIdAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> GetByUserIdAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> UpdateAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

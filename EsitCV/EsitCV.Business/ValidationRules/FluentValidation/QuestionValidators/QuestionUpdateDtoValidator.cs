@@ -14,7 +14,6 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.QuestionValidators
         {
             RuleFor(a => a.ID).GreaterThan(0);
             RuleFor(a => a.Content).NotNull().WithMessage("içerik alanı boş geçilmez");
-            RuleFor(a => a.JobPostingID).NotNull().WithMessage("başlık alanı boş geçilmez");
         }
     }
 }

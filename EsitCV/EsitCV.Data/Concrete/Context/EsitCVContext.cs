@@ -30,7 +30,6 @@ namespace EsitCV.Data.Concrete.Context
         public DbSet<CompanyToken> CompanyTokens { get; set; }
         public DbSet<CurriculumVitae> CurriculumVitaes { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
-        public DbSet<JobApplicationAndJobPosting> JobApplicationAndJobPostings { get; set; }
         public DbSet<JobPosting> JobPostings { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }

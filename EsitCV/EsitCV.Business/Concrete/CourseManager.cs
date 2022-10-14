@@ -17,6 +17,41 @@ namespace EsitCV.Business.Concrete
         public CourseManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
         {
 
-        } 
+        }
+
+        public Task<IDataResult> AddAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> DeleteByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> GetByProfileIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> HardDeleteByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult> UpdateAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

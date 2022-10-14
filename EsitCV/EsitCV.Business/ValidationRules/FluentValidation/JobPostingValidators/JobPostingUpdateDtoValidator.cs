@@ -20,7 +20,6 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.JobPostingValidators
             RuleFor(a => a.LicenceDegree).NotNull().WithMessage("Lisans derecesi alanı boş geçilmez");
             RuleFor(a => a.Language).NotNull().WithMessage("Dil alanı boş geçilmez");
             RuleFor(a => a.TypeOfWork).NotNull().WithMessage("Çalışma tipi boş geçilmez");
-            RuleFor(a => a.CompanyID).GreaterThan(0).WithMessage("şirket alanı boş geçilmez");
 
         }
     }
