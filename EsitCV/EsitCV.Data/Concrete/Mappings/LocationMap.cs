@@ -17,12 +17,15 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.HasKey(u => u.ID);
             builder.Property(u => u.ID).ValueGeneratedOnAdd();
           
-            builder.Property(u => u.Company).IsRequired();
-            builder.Property(u => u.Company).HasMaxLength(20);
+            builder.Property(u => u.Country).IsRequired();
+            builder.Property(u => u.Country).HasMaxLength(20);
             builder.Property(u => u.Province).IsRequired();
             builder.Property(u => u.Province).HasMaxLength(30);
             builder.Property(u => u.District).IsRequired();
             builder.Property(u => u.District).HasMaxLength(30);
+
+           //builder.HasOne<Company>(a => a.Company).WithOne(a => a.Location).HasForeignKey<Company>(c => c.LocationID).OnDelete(DeleteBehavior.NoAction);
+
 
             builder.ToTable("Locations");
         }

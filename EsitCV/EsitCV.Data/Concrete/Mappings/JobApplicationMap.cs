@@ -18,7 +18,9 @@ namespace EsitCV.Data.Concrete.Mappings
 
             builder.HasOne<User>(a => a.User).WithMany(a => a.JobApplications).HasForeignKey(a => a.UserID).OnDelete(DeleteBehavior.NoAction);
             builder.HasOne<JobPosting>(a => a.JobPosting).WithMany(a => a.JobApplications).HasForeignKey(a => a.JobPostingID).OnDelete(DeleteBehavior.NoAction);
-            builder.ToTable("JobPostings");
+
+
+            builder.ToTable("JobApplications");
         }
     }
 }

@@ -30,8 +30,9 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.Property(u => u.PasswordHash).IsRequired();
             builder.Property(u => u.PasswordHash).HasColumnType("VARBINARY(500)");
 
+
             builder.HasOne<CompanyPicture>(a => a.CompanyPicture).WithOne(a => a.Company).HasForeignKey<CompanyPicture>(c => c.CompanyID).OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne<Location>(a => a.Location).WithOne(a => a.Company).HasForeignKey<Location>(c => c.CompanyID);
+            builder.HasOne<Location>(a => a.Location).WithOne(a => a.Company).HasForeignKey<Location>(c => c.CompanyID).OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable("Companies");
         }

@@ -71,7 +71,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
-            IQueryable<Answer> query = DbContext.Set<Answer>().Include(a => a.User).AsNoTracking();
+            IQueryable<Answer> query = DbContext.Set<Answer>().Include(a => a.JobApplication).ThenInclude(a=>a.User).AsNoTracking();
             if (isDeleted.HasValue)
                 query = query.Where(a => a.IsActive == isDeleted);
             switch (orderBy)
@@ -80,7 +80,7 @@ namespace EsitCV.Business.Concrete
                     query = isAscending ? query.OrderBy(a => a.ID) : query.OrderByDescending(a => a.ID);
                     break;
                 case OrderBy.Az:
-                    query = isAscending ? query.OrderBy(a => a.User.FirstName) : query.OrderByDescending(a => a.User.FirstName);
+                    query = isAscending ? query.OrderBy(a => a.JobApplication.User.FirstName) : query.OrderByDescending(a => a.JobApplication.User.FirstName);
                     break;
                 case OrderBy.CreatedDate:
                     query = isAscending ? query.OrderBy(a => a.CreatedDate) : query.OrderByDescending(a => a.CreatedDate);

@@ -33,7 +33,7 @@ namespace EsitCV.Business.Concrete
             _awsStorageService = awsStorageService;
         }
 
-        public async Task<IDataResult> AddAsync(CurriculumVitaeAddDto curriculumVitaeAddDto)
+        public async Task<IDataResult> AddAsync(CurriculumVitaeAddDto curriculumVitaeAddDto) //buraya 
         {
             ValidationTool.Validate(new CurriculumVitaeAddDtoValidator(), curriculumVitaeAddDto);
 
@@ -54,7 +54,7 @@ namespace EsitCV.Business.Concrete
             if (result.ResultStatus != ResultStatus.Success)
                 return new DataResult(ResultStatus.Success, result);
 
-            curriculumVitae.FileName = (string)result.Data;//burasıyüksel ihtimal güncellencek
+            curriculumVitae.FileUrl = (string)result.Data;//burasıyüksel ihtimal güncellencek
             curriculumVitae.User = userIsExist;
             curriculumVitae.UserID = userIsExist.ID;
 
@@ -74,9 +74,9 @@ namespace EsitCV.Business.Concrete
 
             var curriculumVitae = Mapper.Map<CurriculumVitae>(curriculumVitaeUpdateDto);
 
-            _awsStorageService.DeleteCVFile(cvIsExist.FileName);                                                   //burası da güncellenebilir test ederken
+            _awsStorageService.DeleteCVFile(cvIsExist.FileUrl);                                                   //burası da güncellenebilir test ederken
             await _awsStorageService.UploadCVFileAsync(curriculumVitaeUpdateDto.File);                             //burası da güncellenebilir test ederken
-            curriculumVitae.FileName = _awsStorageService.GetCVFileUrl(curriculumVitaeUpdateDto.File.FileName);    //burası da güncellenebilir test ederken
+            curriculumVitae.FileUrl = _awsStorageService.GetCVFileUrl(curriculumVitaeUpdateDto.File.FileName);    //burası da güncellenebilir test ederken
 
             curriculumVitae.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
             curriculumVitae.ModifiedDate = DateTime.Now;
@@ -100,7 +100,7 @@ namespace EsitCV.Business.Concrete
                     query = isAscending ? query.OrderBy(a => a.ID) : query.OrderByDescending(a => a.ID);
                     break;
                 case OrderBy.Az:
-                    query = isAscending ? query.OrderBy(a => a.FileName) : query.OrderByDescending(a => a.FileName);
+                    query = isAscending ? query.OrderBy(a => a.FileUrl) : query.OrderByDescending(a => a.FileUrl);
                     break;
                 case OrderBy.CreatedDate:
                     query = isAscending ? query.OrderBy(a => a.CreatedDate) : query.OrderByDescending(a => a.CreatedDate);

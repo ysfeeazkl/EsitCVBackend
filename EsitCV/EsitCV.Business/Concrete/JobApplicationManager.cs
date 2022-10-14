@@ -48,8 +48,8 @@ namespace EsitCV.Business.Concrete
 
             jobApplication.User = userIsExist;
             jobApplication.UserID = userIsExist.ID;
-            jobApplication.CurriculumVitaeID = cvIsExist.ID;
-            jobApplication.CurriculumVitae= cvIsExist;
+            //jobApplication.CurriculumVitaeID = cvIsExist.ID;
+            //jobApplication.CurriculumVitae= cvIsExist;
             jobApplication.JobPostingID = jobPosting.ID;
             jobApplication.JobPosting= jobPosting;
 
@@ -75,8 +75,8 @@ namespace EsitCV.Business.Concrete
             jobApplication.CreatedDate = DateTime.Now;
             jobApplication.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
-            jobApplication.CurriculumVitaeID = cvIsExist.ID;
-            jobApplication.CurriculumVitae = cvIsExist;
+            //jobApplication.CurriculumVitaeID = cvIsExist.ID;
+            //jobApplication.CurriculumVitae = cvIsExist;
 
             DbContext.JobApplications.Update(jobApplication);
             await DbContext.SaveChangesAsync();

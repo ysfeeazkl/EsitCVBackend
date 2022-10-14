@@ -27,7 +27,7 @@ namespace EsitCV.Entities.Concrete
 
         public JobPosting()
         {
-            Questions=new List<Question>();
+            Questions = new List<Question>();
             JobApplications = new List<JobApplication>();
         }
     }
