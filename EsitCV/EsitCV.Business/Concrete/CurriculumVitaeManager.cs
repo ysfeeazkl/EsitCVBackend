@@ -19,6 +19,7 @@ using EsitCV.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using EsitCV.Business.AbstractUtilities;
 
+
 namespace EsitCV.Business.Concrete
 {
     public class CurriculumVitaeManager : ManagerBase, ICurriculumVitaeService
