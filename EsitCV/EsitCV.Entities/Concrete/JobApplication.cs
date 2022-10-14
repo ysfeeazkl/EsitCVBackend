@@ -17,7 +17,7 @@ namespace EsitCV.Entities.Concrete
         public JobPosting JobPosting{ get; set; }
         public int JobPostingID{ get; set; }
 
-        public ICollection<Answer> Answers { get; set; }
+        public ICollection<Answer>? Answers { get; set; }
 
 
     }
