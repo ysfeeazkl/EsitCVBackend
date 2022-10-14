@@ -11,6 +11,5 @@ namespace EsitCV.Entities.Dtos.AnswerDtos
         public int ID { get; set; }
         public string Content { get; set; }
         public int QuestionID { get; set; }
-        public int UserID { get; set; }
     }
 }
