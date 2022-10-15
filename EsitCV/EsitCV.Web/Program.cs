@@ -58,7 +58,7 @@ builder.Services.AddMemoryCache();
 
 //builder.Services.AddDistributedRedisCache(option =>
 //{
-//    option.Configuration = ""; //redis kullanýlacaðý zaman açýlacak
+//    option.Configuration = ""; //redis kullanï¿½lacaï¿½ï¿½ zaman aï¿½ï¿½lacak
 //    //option.Configuration = "127.0.0.1:6379";
 //});
 

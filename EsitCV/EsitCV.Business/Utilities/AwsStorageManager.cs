@@ -23,7 +23,7 @@ namespace EsitCV.Business.Utilities
         public AwsStorageManager(IConfiguration config)
         {
             string accessKey = config["AwsConfiguration:AWSAccessKey"];
-            string secretKey = config["AwsConfiguration:AWSAccessKey"];
+            string secretKey = config["AwsConfiguration:AWSSecretKey"];
 
             //var cred = new AwsCredentials()
             //{
