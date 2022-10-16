@@ -64,7 +64,10 @@ namespace EsitCV.Business.Utilities
 
                 await amazonS3Client.PutObjectAsync(objectRequest);
 
-                return new DataResult(ResultStatus.Success, objName);
+                var url = GetFileUrl(objName);
+
+
+                return new DataResult(ResultStatus.Success, url, objName);
 
             }
             catch (AmazonS3Exception ex)
@@ -125,8 +128,9 @@ namespace EsitCV.Business.Utilities
                 };
 
                 await amazonS3Client.PutObjectAsync(objectRequest);
+                var url = GetCVFileUrl(objName);
 
-                return new DataResult(ResultStatus.Success, objName);
+                return new DataResult(ResultStatus.Success, url,objName);
 
 
             }
