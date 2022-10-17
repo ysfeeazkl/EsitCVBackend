@@ -79,7 +79,7 @@ namespace EsitCV.Business.Concrete
 
             var jobPosting = Mapper.Map<JobPosting>(jobPostingUpdateDto);
             jobPosting.ModifiedDate = DateTime.Now;
-            jobPosting.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            //jobPosting.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             DbContext.JobPostings.Update(jobPosting);
             await DbContext.SaveChangesAsync();
