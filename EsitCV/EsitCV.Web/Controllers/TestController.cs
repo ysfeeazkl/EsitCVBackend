@@ -28,9 +28,9 @@ namespace EsitCV.API.Controllers
         public async Task<IActionResult> uploadFile(IFormFile file)
         {
             var result = await _awsStorageService.UploadFileAsync(file);
-            var url = _awsStorageService.GetFileUrl((string)result.Data);
+            //var url = _awsStorageService.GetFileUrl((string)result.Data);
             if (result.ResultStatus == ResultStatus.Success)
-                return Ok(url);
+                return Ok(result);
             return BadRequest(result);
         }
     }

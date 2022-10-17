@@ -66,8 +66,7 @@ namespace EsitCV.Business.Utilities
 
                 var url = GetFileUrl(objName);
 
-
-                return new DataResult(ResultStatus.Success, url, objName);
+                return new DataResult(ResultStatus.Success, new {FileName=objName,FileUrl=url });
 
             }
             catch (AmazonS3Exception ex)

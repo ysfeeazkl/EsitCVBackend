@@ -16,6 +16,7 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.HasKey(u => u.ID);
             builder.Property(u => u.ID).ValueGeneratedOnAdd();
             builder.Property(u => u.FileUrl).IsRequired();
+            builder.Property(u => u.FileName).IsRequired();
        
             builder.ToTable("CurriculumVitaes");
         }

@@ -39,7 +39,7 @@ namespace EsitCV.Business.Concrete
 
             var jobPosting = Mapper.Map<JobPosting>(jobPostingAddDto);
             jobPosting.CreatedDate = DateTime.Now;
-            jobPosting.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            //jobPosting.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             jobPosting.CompanyID = companyIsExist.ID;
             jobPosting.Company = companyIsExist;
@@ -47,22 +47,25 @@ namespace EsitCV.Business.Concrete
             await DbContext.JobPostings.AddAsync(jobPosting);
             await DbContext.SaveChangesAsync();
 
-            if (jobPostingAddDto.Questions.Count() > 0)                                                                                                         //evde ayık kafayla tekrar bakılcak
-            {                                                                                                                                                   //evde ayık kafayla tekrar bakılcak
-                var questions = Mapper.Map<List<Question>>(jobPostingAddDto.Questions);                                                                         //evde ayık kafayla tekrar bakılcak
-                                                                                                                                                                //evde ayık kafayla tekrar bakılcak
-                foreach (var question in questions)                                                                                                             //evde ayık kafayla tekrar bakılcak
-                {                                                                                                                                               //evde ayık kafayla tekrar bakılcak
-                    question.JobPosting = jobPosting;                                                                                                           //evde ayık kafayla tekrar bakılcak
-                    question.JobPostingID = jobPosting.ID;                                                                                                      //evde ayık kafayla tekrar bakılcak
-                                                                                                                                                                //evde ayık kafayla tekrar bakılcak
-                    await DbContext.Questions.AddAsync(question);                                                                                               //evde ayık kafayla tekrar bakılcak
-                    await Task.Delay(10);                                                                                                                       //evde ayık kafayla tekrar bakılcak
-                }                                                                                                                                               //evde ayık kafayla tekrar bakılcak
-                    await DbContext.SaveChangesAsync();                                                                                                         //evde ayık kafayla tekrar bakılcak
-                return new DataResult(ResultStatus.Success, "İş ilanı ve soruları başarıyla Eklendi.", new List<object> { jobPosting, questions });             //evde ayık kafayla tekrar bakılcak
-                                                                                                                                                                //evde ayık kafayla tekrar bakılcak
-            }                                                                                                                                                   //evde ayık kafayla tekrar bakılcak
+            if (jobPostingAddDto.Questions.Count() > 0)
+            {
+                var questions = Mapper.Map<List<Question>>(jobPostingAddDto.Questions);
+
+                foreach (var question in questions)
+                {
+                    question.JobPosting = jobPosting;
+                    question.JobPostingID = jobPosting.ID;
+                    //jobPosting.Questions.Add(question);
+
+                    await DbContext.Questions.AddAsync(question);
+                    await Task.Delay(10);
+                }
+                DbContext.JobPostings.Update(jobPosting);
+                await DbContext.SaveChangesAsync();
+                //return new DataResult(ResultStatus.Success, "İş ilanı ve soruları başarıyla Eklendi.", new List<object> { jobPosting, questions });
+                return new DataResult(ResultStatus.Success, "İş ilanı ve soruları başarıyla Eklendi.",jobPosting);
+
+            }
 
             return new DataResult(ResultStatus.Success, "İş ilanı başarıyla Eklendi.", jobPosting);
         }
@@ -86,7 +89,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
-            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Company).AsNoTracking();
+            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Questions).Include(a => a.Company).AsNoTracking();
             if (isDeleted.HasValue)
                 query = query.Where(a => a.IsActive == isDeleted);
             switch (orderBy)
@@ -115,12 +118,12 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllByCompanyIdAsync(int id)
         {
-            var companyIsExist = await DbContext.Companies.SingleOrDefaultAsync(a=>a.ID==id);
-            if (companyIsExist is not null)
+            var companyIsExist = await DbContext.Companies.SingleOrDefaultAsync(a => a.ID == id);
+            if (companyIsExist is null)
                 return new DataResult(ResultStatus.Wrong, "böyle bir şirket bulunamadı");
 
-            var query = DbContext.Set<JobPosting>().Where(a=>a.CompanyID == id).AsNoTracking();
-            if (query.Count()<1)
+            var query = DbContext.Set<JobPosting>().Include(a=>a.Questions).Where(a => a.CompanyID == id).AsNoTracking();
+            if (query.Count() < 1)
                 return new DataResult(ResultStatus.Wrong, "herhangi bir iş ilanı bulunamadı");
 
             return new DataResult(ResultStatus.Success, query);
@@ -129,7 +132,7 @@ namespace EsitCV.Business.Concrete
         public async Task<IDataResult> GetByIdAsync(int id)
         {
             var jobPosting = await DbContext.JobPostings.SingleOrDefaultAsync(a => a.ID == id);
-            if (jobPosting is not null)
+            if (jobPosting is null)
                 return new DataResult(ResultStatus.Wrong, "böyle bir iş ilanı bulunamadı");
             return new DataResult(ResultStatus.Success, jobPosting);
 
@@ -143,14 +146,14 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Wrong, "böyle bir iş ilanı bulunamadı");
 
             jobPosting.ModifiedDate = DateTime.Now;
-            jobPosting.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            //jobPosting.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
             jobPosting.IsActive = false;
             jobPosting.IsDeleted = true;
 
             DbContext.JobPostings.Update(jobPosting);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success,"İş ilanı başarıyla arşivlendi",jobPosting);
+            return new DataResult(ResultStatus.Success, "İş ilanı başarıyla arşivlendi", jobPosting);
         }
         public async Task<IDataResult> HardDeleteByIdAsync(int id)
         {
@@ -163,6 +166,6 @@ namespace EsitCV.Business.Concrete
             return new DataResult(ResultStatus.Success, "İş ilanı başarıyla silindi", jobPosting);
         }
 
-       
+
     }
 }

@@ -2,6 +2,7 @@
 using EsitCV.Entities.Concrete;
 using EsitCV.Entities.Dtos.AuthDtos;
 using EsitCV.Entities.Dtos.CompanyDtos;
+using EsitCV.Entities.Dtos.CompanyTokenDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace EsitCV.Business.AutoMapper
         {
             CreateMap<CompanyLoginWithEmailDto, Company>();
             CreateMap<CompanyRegisterDto, Company>();
-            CreateMap<CompanyDto, Company>();
+            CreateMap<CompanyDto, Company>().ReverseMap();
+            CreateMap<CompanyTokenDto, CompanyToken>().ReverseMap();
         }
     }
 }

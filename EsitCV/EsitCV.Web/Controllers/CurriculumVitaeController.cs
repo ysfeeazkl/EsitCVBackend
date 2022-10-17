@@ -18,7 +18,7 @@ namespace EsitCV.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(CurriculumVitaeAddDto curriculumVitaeAddDto)
+        public async Task<IActionResult> AddAsync([FromQuery]CurriculumVitaeAddDto curriculumVitaeAddDto)
         {
             var result = await _curriculumVitaeService.AddAsync(curriculumVitaeAddDto);
             if (result.ResultStatus == ResultStatus.Success)

@@ -40,21 +40,21 @@ namespace EsitCV.Business.Concrete
             var userIsExist = await DbContext.Users.SingleOrDefaultAsync(a => a.ID == curriculumVitaeAddDto.UserID);
             if (userIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir kullanıcı bulunamadı  ");
-            var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == curriculumVitaeAddDto.UserID);
-            if (cvIsExist is not null)
-                return new DataResult(ResultStatus.Error, "Bu kullanıcının zaten cv si var");
-
-            var curriculumVitae = Mapper.Map<CurriculumVitae>(curriculumVitaeAddDto);
-            curriculumVitae.CreatedDate = DateTime.Now;
-            curriculumVitae.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
-
-          
+            //var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == curriculumVitaeAddDto.UserID);
+            //if (cvIsExist is not null)
+            //    return new DataResult(ResultStatus.Error, "Bu kullanıcının zaten cv si var");
 
             var result = await _awsStorageService.UploadCVFileAsync(curriculumVitaeAddDto.File);
             if (result.ResultStatus != ResultStatus.Success)
-                return new DataResult(ResultStatus.Success, result);
+                return new DataResult(ResultStatus.Error, result);
 
-            curriculumVitae.FileUrl = (string)result.Data;//burasıyüksel ihtimal güncellencek
+            var curriculumVitae = Mapper.Map<CurriculumVitae>(curriculumVitaeAddDto);
+            curriculumVitae.CreatedDate = DateTime.Now;
+            //curriculumVitae.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+
+
+            curriculumVitae.FileUrl = (string)result.Message;
+            curriculumVitae.FileName = (string)result.Data;
             curriculumVitae.User = userIsExist;
             curriculumVitae.UserID = userIsExist.ID;
 
