@@ -29,7 +29,7 @@ namespace EsitCV.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
+        public Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)   
         {
             throw new NotImplementedException();
         }

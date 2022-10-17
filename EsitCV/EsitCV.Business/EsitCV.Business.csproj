@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ValidationRules\FluentValidation\CompanyPicuteValidators\" />
     <Folder Include="ValidationRules\FluentValidation\CompanyTokenValidators\" />
     <Folder Include="ValidationRules\FluentValidation\CompanyValidators\" />
     <Folder Include="ValidationRules\FluentValidation\LocationValidators\" />

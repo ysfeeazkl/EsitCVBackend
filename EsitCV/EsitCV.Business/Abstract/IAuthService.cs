@@ -17,11 +17,14 @@ namespace EsitCV.Business.Abstract
         Task<AccessToken> CreateAccessTokenForUserAsync(User user, bool isRefresh);
         Task<AccessToken> CreateAccessTokenForCompanyAsync(Company company, bool isRefresh);
 
+
         Task<IDataResult> CreateAccessTokenByUserIdAsync(int userId, bool isRefresh);
         Task<IDataResult> CreateAccessTokenByCompanyIdAsync(int companyId, bool isRefresh);
         Task<IDataResult> CompanyRegisterAsync(CompanyRegisterDto companyRegisterDto);
         Task<IDataResult> UserRegisterAsync(UserRegisterDto userRegisterDto);
         Task<IDataResult> CompanyLoginWithEmailAsync(CompanyLoginWithEmailDto companyLoginWithEmailDto);
         Task<IDataResult> UserLoginWithEmailAsync(UserLoginWithEmailDto userLoginWithEmailDto);
+        //Task<IDataResult> UserForgotPasswordWithEmail();
+        //Task<IDataResult> CompanyForgotPasswordWithEmail();
     }
 }
