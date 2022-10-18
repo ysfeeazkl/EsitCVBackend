@@ -105,17 +105,20 @@ namespace EsitCV.Business.Concrete
             var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.ID == id);
             if (userPictureIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
+
             return new DataResult(ResultStatus.Error, userPictureIsExist);
         }
 
 
         public async Task<IDataResult> DeleteByFileUrlAsync(string fileUrl)
         {
-            var companyPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.FileUrl == fileUrl);
-            if (companyPictureIsExist is null)
+            var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.FileUrl == fileUrl);
+            if (userPictureIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
-            _awsStorageService.DeleteFile(companyPictureIsExist.FileName);
-            return new DataResult(ResultStatus.Error, "Resim başarıyla silindi", companyPictureIsExist);
+            _awsStorageService.DeleteFile(userPictureIsExist.FileName);
+            DbContext.UserPictures.Remove(userPictureIsExist);
+            await DbContext.SaveChangesAsync();
+            return new DataResult(ResultStatus.Error, "Resim başarıyla silindi", userPictureIsExist);
         }
     }
 }

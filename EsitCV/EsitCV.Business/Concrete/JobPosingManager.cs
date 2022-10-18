@@ -29,7 +29,7 @@ namespace EsitCV.Business.Concrete
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<IDataResult> AddAsync(JobPostingAddDto jobPostingAddDto) //iş ilanı sorularını da koy
+        public async Task<IDataResult> AddAsync(JobPostingAddDto jobPostingAddDto) //burayı tekrar kontrol et
         {
             ValidationTool.Validate(new JobPostingAddDtoValidator(), jobPostingAddDto);
 

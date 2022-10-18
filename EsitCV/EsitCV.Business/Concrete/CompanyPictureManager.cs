@@ -117,6 +117,10 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
 
             _awsStorageService.DeleteFile(companyPictureIsExist.FileName);
+
+            DbContext.CompanyPictures.Remove(companyPictureIsExist);
+            await DbContext.SaveChangesAsync();
+
             return new DataResult(ResultStatus.Error, "Resim başarıyla silindi" ,companyPictureIsExist);
         }
     }

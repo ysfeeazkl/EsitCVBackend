@@ -144,10 +144,12 @@ namespace EsitCV.Business.Concrete
             curriculumVitae.IsActive = false;
             curriculumVitae.IsDeleted = true;
 
+            _awsStorageService.DeleteFile(curriculumVitae.FileName);
+
             DbContext.CurriculumVitaes.Update(curriculumVitae);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "Marka başarı ile silindi");
+            return new DataResult(ResultStatus.Success, "CV başarı ile silindi");
         }
 
         public async Task<IDataResult> HardDeleteByIdAsync(int id)
@@ -156,10 +158,11 @@ namespace EsitCV.Business.Concrete
             if (curriculumVitae is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir cv bulunmuyor");
 
+            _awsStorageService.DeleteFile(curriculumVitae.FileName);
             DbContext.CurriculumVitaes.Remove(curriculumVitae);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "Marka başarı ile silindi");
+            return new DataResult(ResultStatus.Success, "Cv başarı ile silindi");
         }
     }
 }
