@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Dtos\LocationDtos\" />
     <Folder Include="Dtos\UserProfileDtos\" />
-    <Folder Include="Dtos\UserDisabilityDtos\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
 

@@ -37,7 +37,8 @@ namespace EsitCV.Data.Concrete.Context
         public DbSet<Question> Questions { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAndOperationClaim> UserAndOperationClaims { get; set; }
-        public DbSet<UserDisability> UserDisabilitys { get; set; }
+        public DbSet<UserAndDisability> UserAndDisabilities { get; set; }
+        public DbSet<Disability> Disabilities { get; set; }
         public DbSet<UserPicture> UserPictures { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<UserToken> UserTokens { get; set; }
@@ -56,11 +57,13 @@ namespace EsitCV.Data.Concrete.Context
             modelBuilder.ApplyConfiguration(new OperationClaimMap());
             modelBuilder.ApplyConfiguration(new QuestionMap());
             modelBuilder.ApplyConfiguration(new UserAndOperationClaimMap());
-            modelBuilder.ApplyConfiguration(new UserDisabilityMap());
+            modelBuilder.ApplyConfiguration(new UserAndDisabilityMap());
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new UserPictureMap());
             modelBuilder.ApplyConfiguration(new UserTokenMap());
-        
+            modelBuilder.ApplyConfiguration(new DisabilityMap());
+            modelBuilder.ApplyConfiguration(new UserAndDisabilityMap());
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

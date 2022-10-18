@@ -32,7 +32,6 @@ namespace EsitCV.Data.Concrete.Mappings
 
             builder.HasOne<CurriculumVitae>(a => a.CurriculumVitae).WithOne(a => a.User).HasForeignKey<CurriculumVitae>(c => c.UserID);
             builder.HasOne<UserPicture>(a => a.UserPicture).WithOne(a => a.User).HasForeignKey<UserPicture>(c => c.UserID);
-            builder.HasOne<UserDisability>(a => a.UserDisability).WithOne(a => a.User).HasForeignKey<UserDisability>(c => c.UserId);
             builder.HasOne<UserProfile>(a => a.UserProfile).WithOne(a => a.User).HasForeignKey<UserProfile>(c => c.UserID);
             builder.ToTable("Users");
         }

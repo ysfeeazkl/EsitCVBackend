@@ -23,9 +23,9 @@ namespace EsitCV.Business.Concrete
     public class UserManager : ManagerBase, IUserService
     {
         IHttpContextAccessor _httpContextAccessor;
-        public UserManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
+        public UserManager(EsitCVContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(mapper, context)
         {
-
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<IDataResult> UpdateAsync(UserUpdateDto userUpdateDto)
         {

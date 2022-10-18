@@ -117,7 +117,8 @@ options.AddPolicy("Role",
 builder.Services.AddAutoMapper(typeof(AboutProfile), typeof(AnswerProfile), typeof(AreasOfInterestProfile), typeof(CurriculumVitaeProfile),
     typeof(CompanyPictureProfile), typeof(CompanyProfile), typeof(CourseProfile), typeof(CurrentProjectProfile), typeof(DisabilityProfile),
     typeof(EducationProfile), typeof(HobbieProfile), typeof(JobApplicationProfile), typeof(JobPostingProfile), typeof(LanguageProfile),
-    typeof(LicenseOrCertificateProfile), typeof(LocationProfile), typeof(OrganizationProfile), typeof(QuestionProfile), typeof(UserPictureProfile), typeof(UserProfile), typeof(UserProfileProfile), typeof(WorkExperienceProfile));
+    typeof(LicenseOrCertificateProfile), typeof(LocationProfile), typeof(OrganizationProfile), typeof(QuestionProfile), typeof(UserPictureProfile),
+    typeof(UserProfile), typeof(UserProfileProfile), typeof(WorkExperienceProfile),typeof(UserAndDisabilityProfile));
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

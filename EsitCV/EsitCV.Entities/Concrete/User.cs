@@ -24,8 +24,7 @@ namespace EsitCV.Entities.Concrete
 
         //     
 
-        public UserDisability UserDisability { get; set; }
-        public int UserDisabilityID { get; set; }
+        
 
         public int UserPictureID { get; set; }
         public UserPicture UserPicture { get; set; }
@@ -38,6 +37,7 @@ namespace EsitCV.Entities.Concrete
         public ICollection<JobApplication> JobApplications { get; set; }
         public ICollection<UserAndOperationClaim> UserAndOperationClaims { get; set; }
         public ICollection<UserToken> UserTokens { get; set; }
+        public ICollection<UserAndDisability> UserAndDisabilities { get; set; }
 
         [NotMapped]
         public ICollection<IFeatures> Features { get; set; }

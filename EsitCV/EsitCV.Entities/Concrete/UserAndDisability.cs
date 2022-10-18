@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Concrete
 {
-    public class UserDisability : EntityBase<int>, IEntity
+    public class UserAndDisability : EntityBase<int>, IEntity
     {
         public User User { get; set; }
-        public int UserId { get; set; }
-        public ICollection<Disability> Disabilities { get; set; }
+        public int UserID { get; set; }
+        public Disability Disability { get; set; }
+        public int DisabilityID { get; set; }
+        public int PercentageOfDisability { get; set; }
+
     }
 }
