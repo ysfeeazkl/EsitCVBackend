@@ -33,7 +33,7 @@ namespace EsitCV.Business.Concrete
             _awsStorageService = awsStorageService;
         }
 
-        public async Task<IDataResult> AddAsync(CurriculumVitaeAddDto curriculumVitaeAddDto) //buraya 
+        public async Task<IDataResult> AddAsync(CurriculumVitaeAddDto curriculumVitaeAddDto)
         {
             ValidationTool.Validate(new CurriculumVitaeAddDtoValidator(), curriculumVitaeAddDto);
 
@@ -120,18 +120,18 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetByIdAsync(int id)
         {
-            var brand = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.Equals(id));
-            if (brand is null)
+            var curriculumVitae = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.Equals(id));
+            if (curriculumVitae is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
-            return new DataResult(ResultStatus.Success, brand);
+            return new DataResult(ResultStatus.Success, curriculumVitae);
         }
 
         public async Task<IDataResult> GetByUserIdAsync(int id)
         {
-            var brand = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == id);
-            if (brand is null)
+            var curriculumVitae = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == id);
+            if (curriculumVitae is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
-            return new DataResult(ResultStatus.Success, brand);
+            return new DataResult(ResultStatus.Success, curriculumVitae);
         }
 
         public async Task<IDataResult> DeleteByIdAsync(int id)
@@ -161,7 +161,5 @@ namespace EsitCV.Business.Concrete
 
             return new DataResult(ResultStatus.Success, "Marka başarı ile silindi");
         }
-
-
     }
 }

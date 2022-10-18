@@ -19,6 +19,7 @@ namespace EsitCV.Business.AutoMapper
             CreateMap<CompanyRegisterDto, Company>();
             CreateMap<CompanyDto, Company>().ReverseMap();
             CreateMap<CompanyTokenDto, CompanyToken>().ReverseMap();
+            CreateMap<CompanyUpdateDto, Company>();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace EsitCV.Business.AutoMapper
             CreateMap<UserRegisterDto, User>().ReverseMap();
             CreateMap<UserDto, User>().ReverseMap();
             CreateMap<UserTokenDto, UserToken>().ReverseMap();
+            CreateMap<UserUpdateDto, User>().ReverseMap();
         }
     }
 }

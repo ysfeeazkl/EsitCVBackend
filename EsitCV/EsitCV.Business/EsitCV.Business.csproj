@@ -27,12 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ValidationRules\FluentValidation\CompanyValidators\" />
     <Folder Include="ValidationRules\FluentValidation\LocationValidators\" />
     <Folder Include="ValidationRules\FluentValidation\UserDisabilityValidators\" />
     <Folder Include="ValidationRules\FluentValidation\UserProfileValidators\" />
     <Folder Include="ValidationRules\FluentValidation\UserTokenValidators\" />
-    <Folder Include="ValidationRules\FluentValidation\UserValidators\" />
   </ItemGroup>
 
 </Project>
