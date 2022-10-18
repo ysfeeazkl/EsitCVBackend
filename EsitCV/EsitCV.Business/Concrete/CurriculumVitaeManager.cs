@@ -74,9 +74,9 @@ namespace EsitCV.Business.Concrete
 
             var curriculumVitae = Mapper.Map<CurriculumVitae>(curriculumVitaeUpdateDto);
 
-            _awsStorageService.DeleteCVFile(cvIsExist.FileUrl);                                                   //burası da güncellenebilir test ederken
-            await _awsStorageService.UploadCVFileAsync(curriculumVitaeUpdateDto.File);                             //burası da güncellenebilir test ederken
-            curriculumVitae.FileUrl = _awsStorageService.GetCVFileUrl(curriculumVitaeUpdateDto.File.FileName);    //burası da güncellenebilir test ederken
+            _awsStorageService.DeleteCVFile(cvIsExist.FileUrl);                                                   
+            await _awsStorageService.UploadCVFileAsync(curriculumVitaeUpdateDto.File);                            
+            curriculumVitae.FileUrl = _awsStorageService.GetCVFileUrl(curriculumVitaeUpdateDto.File.FileName);    
 
             curriculumVitae.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
             curriculumVitae.ModifiedDate = DateTime.Now;

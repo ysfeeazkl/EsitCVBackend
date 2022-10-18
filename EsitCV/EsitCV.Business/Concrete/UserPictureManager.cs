@@ -9,39 +9,113 @@ using EsitCV.Business.Abstract;
 using EsitCV.Business.Utilities;
 using AutoMapper;
 using EsitCV.Data.Concrete.Context;
+using EsitCV.Entities.Dtos.UserPictureDtos;
+using EsitCV.Shared.Utilities.Results.Concrete;
+using EsitCV.Shared.Utilities.Results.ComplexTypes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using EsitCV.Business.AbstractUtilities;
+using EsitCV.Entities.Concrete;
+using EsitCV.Shared.Utilities.Validation.FluentValidation;
+using EsitCV.Business.ValidationRules.FluentValidation.UserPictureValidators;
 
 namespace EsitCV.Business.Concrete
 {
     public class UserPictureManager: ManagerBase, IUserPictureService
     {
-        public UserPictureManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
+        IHttpContextAccessor _httpContextAccessor;
+        IAwsStorageService _awsStorageService;
+        public UserPictureManager(EsitCVContext context, IMapper mapper, IAwsStorageService awsStorageService, IHttpContextAccessor httpContextAccessor) : base(mapper, context)
         {
-
+            _awsStorageService = awsStorageService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public Task<IDataResult> AddAsync()
+        public async Task<IDataResult> AddAsync(UserPictureAddDto userPictureAddDto)
         {
-            throw new NotImplementedException();
+            ValidationTool.Validate(new UserPictureAddDtoValidator(), userPictureAddDto);
+
+            var userIsExist = await DbContext.Users.SingleOrDefaultAsync(a => a.ID == userPictureAddDto.UserID);
+            if (userIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir kullanıcı bulunamadı");
+            var pictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.UserID == userIsExist.ID);
+            if (pictureIsExist is not null)
+                return new DataResult(ResultStatus.Wrong, "Kullanıcının bir resmi var güncelleyebilirsiniz");
+
+            var result = await _awsStorageService.UploadCVFileAsync(userPictureAddDto.File);
+            if (result.ResultStatus != ResultStatus.Success)
+                return new DataResult(ResultStatus.Error, result);
+
+            var userPicture = Mapper.Map<UserPicture>(userPictureAddDto);
+            userPicture.CreatedDate = DateTime.Now;
+            //userPicture.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+
+            userPicture.FileUrl = (string)result.Message;
+            userPicture.FileName = (string)result.Data;
+            userPicture.User = userIsExist;
+            userPicture.UserID = userIsExist.ID;
+
+            await DbContext.UserPictures.AddAsync(userPicture);
+            await DbContext.SaveChangesAsync();
+
+            return new DataResult(ResultStatus.Success, "Kullanıcı Resimi başarıyla Eklendi.", userPicture);
+        }
+        public async Task<IDataResult> UpdateAsync(UserPictureUpdateDto userPictureUpdateDto)
+        {
+            ValidationTool.Validate(new UserPictureUpdateDtoValidator(), userPictureUpdateDto);
+
+            var userIsExist = await DbContext.Users.SingleOrDefaultAsync(a => a.ID == userPictureUpdateDto.UserID);
+            if (userIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir şirket bulunamadı");
+            var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.ID == userPictureUpdateDto.ID);
+            if (userPictureIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
+
+            _awsStorageService.DeleteFile(userPictureIsExist.FileName);
+            var result = await _awsStorageService.UploadCVFileAsync(userPictureUpdateDto.File);
+            if (result.ResultStatus != ResultStatus.Success)
+                return new DataResult(ResultStatus.Error, result);
+
+            var userPicture = Mapper.Map<UserPictureUpdateDto, UserPicture>(userPictureUpdateDto, userPictureIsExist);
+            userPicture.CreatedDate = DateTime.Now;
+            //userPicture .CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+
+
+            userPicture.FileUrl = (string)result.Message;
+            userPicture.FileName = (string)result.Data;
+            userPicture.User = userIsExist;
+            userPicture.UserID = userIsExist.ID;
+
+            DbContext.UserPictures.Update(userPicture);
+            await DbContext.SaveChangesAsync();
+
+            return new DataResult(ResultStatus.Success, "Şirket Resimi başarıyla güncellendş.", userPicture);
         }
 
-        public Task<IDataResult> DeleteByFileNameAsync()
+        public async Task<IDataResult> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.UserID == id);
+            if (userPictureIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
+            return new DataResult(ResultStatus.Error, userPictureIsExist);
         }
 
-        public Task<IDataResult> GetByIdAsync()
+        public async Task<IDataResult> GetByUserIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.ID == id);
+            if (userPictureIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
+            return new DataResult(ResultStatus.Error, userPictureIsExist);
         }
 
-        public Task<IDataResult> GetByUserIdAsync()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<IDataResult> UpdateAsync()
+        public async Task<IDataResult> DeleteByFileUrlAsync(string fileUrl)
         {
-            throw new NotImplementedException();
+            var companyPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.FileUrl == fileUrl);
+            if (companyPictureIsExist is null)
+                return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
+            _awsStorageService.DeleteFile(companyPictureIsExist.FileName);
+            return new DataResult(ResultStatus.Error, "Resim başarıyla silindi", companyPictureIsExist);
         }
     }
 }
