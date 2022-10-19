@@ -1,4 +1,5 @@
 using EsitCV.API.Filters;
+using EsitCV.API.Middlewares;
 using EsitCV.Business.AutoMapper;
 using EsitCV.Business.Extensions;
 using EsitCV.Shared.Utilities.Security.Encryption;
@@ -134,6 +135,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EsitCVBackend v1"));
+app.UseCors(x => x
+.AllowAnyMethod()
+.AllowAnyHeader()
+.SetIsOriginAllowed(origin => true) // allow any origin
+.AllowCredentials());
+app.UseHsts();
+
+app.UseRouting();
 
 app.UseHttpsRedirection();
 

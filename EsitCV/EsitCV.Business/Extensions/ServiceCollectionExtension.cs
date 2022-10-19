@@ -27,6 +27,13 @@ namespace EsitCV.Business.Extensions
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<ILoggerService, LoggerManager>();
 
+            services.AddScoped<ICompanyService, CompanyManager>();
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<ICompanyPictureService, CompanyPictureManager>();  
+            services.AddScoped<IUserPictureService, UserPictureManager>();
+            services.AddScoped<IDisabilityService, DisabilityManager>();
+            services.AddScoped<IUserAndDisabilityService, UserAndDisabilityManager>();
+
 
             services.AddScoped<ICurriculumVitaeService, CurriculumVitaeManager>();
             services.AddScoped<IAwsStorageService, AwsStorageManager>();
