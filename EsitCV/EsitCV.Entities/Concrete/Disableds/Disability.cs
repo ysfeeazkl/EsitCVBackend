@@ -13,6 +13,10 @@ namespace EsitCV.Entities.Concrete.Disableds
         //public int PercentageOfObstacles { get; set; }
         public ICollection<UserAndDisability> UserAndDisabilities { get; set; }
 
+        public Disability()
+        {
+            UserAndDisabilities = new List<UserAndDisability>();
+        }
 
     }
 }

@@ -54,8 +54,11 @@ namespace EsitCV.Business.Concrete
             userPicture.FileName = (string)result.Data;
             userPicture.User = userIsExist;
             userPicture.UserID = userIsExist.ID;
+            userIsExist.UserPicture = userPicture;
+            userIsExist.UserPictureID = userPicture.ID;
 
             await DbContext.UserPictures.AddAsync(userPicture);
+             DbContext.Users.Update(userIsExist);
             await DbContext.SaveChangesAsync();
 
             return new DataResult(ResultStatus.Success, "Kullanıcı Resimi başarıyla Eklendi.", userPicture);
@@ -85,6 +88,8 @@ namespace EsitCV.Business.Concrete
             userPicture.FileName = (string)result.Data;
             userPicture.User = userIsExist;
             userPicture.UserID = userIsExist.ID;
+            userIsExist.UserPicture = userPicture;
+            userIsExist.UserPictureID = userPicture.ID;
 
             DbContext.UserPictures.Update(userPicture);
             await DbContext.SaveChangesAsync();
@@ -97,7 +102,7 @@ namespace EsitCV.Business.Concrete
             var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.UserID == id);
             if (userPictureIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
-            return new DataResult(ResultStatus.Error, userPictureIsExist);
+            return new DataResult(ResultStatus.Success, userPictureIsExist);
         }
 
         public async Task<IDataResult> GetByUserIdAsync(int id)
@@ -106,7 +111,7 @@ namespace EsitCV.Business.Concrete
             if (userPictureIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
 
-            return new DataResult(ResultStatus.Error, userPictureIsExist);
+            return new DataResult(ResultStatus.Success, userPictureIsExist);
         }
 
 

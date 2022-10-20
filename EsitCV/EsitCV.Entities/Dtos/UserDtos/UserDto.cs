@@ -17,13 +17,10 @@ namespace EsitCV.Entities.Dtos.UserDtos
         public string EmailAddress { get; set; }
         public string UserName { get; set; }
         public DateTime LastLogin { get; set; }
-
         public UserPicture UserPicture { get; set; }
         public int UserPictureID { get; set; }
-
         public UserProfile UserProfile { get; set; }
         public int UserProfileID { get; set; }
-
         public CurriculumVitae CurriculumVitae { get; set; }
         public int CurriculumVitaeID { get; set; }
 

@@ -42,5 +42,13 @@ namespace EsitCV.Entities.Concrete
         [NotMapped]
         public ICollection<IFeatures> Features { get; set; }
 
+        public User()
+        {
+            JobApplications = new List<JobApplication>();
+            UserAndOperationClaims = new List<UserAndOperationClaim>();
+            UserTokens = new List<UserToken>();
+            UserAndDisabilities = new List<UserAndDisability>();
+        }
+
     }
 }

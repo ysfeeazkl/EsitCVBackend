@@ -56,7 +56,11 @@ namespace EsitCV.Business.Concrete
             companyPicture.Company = companyIsExist;
             companyPicture.CompanyID = companyIsExist.ID;
 
+            companyIsExist.CompanyPicture = companyPicture;
+            companyIsExist.CompanyPictureID = companyPicture.ID;
+
             await DbContext.CompanyPictures.AddAsync(companyPicture);
+            DbContext.Companies.Update(companyIsExist);
             await DbContext.SaveChangesAsync();
 
             return new DataResult(ResultStatus.Success, "Şirket Resimi başarıyla Eklendi.", companyPicture);

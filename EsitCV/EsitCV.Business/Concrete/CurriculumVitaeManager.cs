@@ -58,7 +58,13 @@ namespace EsitCV.Business.Concrete
             curriculumVitae.User = userIsExist;
             curriculumVitae.UserID = userIsExist.ID;
 
+            userIsExist.CurriculumVitae = curriculumVitae;
+            userIsExist.CurriculumVitaeID = curriculumVitae.ID;
+
+
+
             await DbContext.CurriculumVitaes.AddAsync(curriculumVitae);
+            DbContext.Users.Update(userIsExist);
             await DbContext.SaveChangesAsync();
 
             return new DataResult(ResultStatus.Success, "Cv başarıyla Eklendi.", curriculumVitae);
