@@ -9,6 +9,7 @@ namespace EsitCV.Entities.Dtos.UserTokenDtos
 {
     public class UserWithTokenDto
     {
+
         public UserDto User { get; set; }
         public UserTokenDto Token { get; set; }
     }

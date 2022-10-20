@@ -26,7 +26,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(CurriculumVitaeUpdateDto curriculumVitaeUpdateDto)
+        public async Task<IActionResult> UpdateAsync([FromQuery] CurriculumVitaeUpdateDto curriculumVitaeUpdateDto)
         {
             var result = await _curriculumVitaeService.UpdateAsync(curriculumVitaeUpdateDto);
             if (result.ResultStatus == ResultStatus.Success)

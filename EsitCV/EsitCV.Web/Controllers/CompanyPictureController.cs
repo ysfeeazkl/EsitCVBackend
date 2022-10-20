@@ -18,7 +18,7 @@ namespace EsitCV.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(CompanyPictureAddDto companyPictureAddDto)
+        public async Task<IActionResult> AddAsync([FromQuery] CompanyPictureAddDto companyPictureAddDto)
         {
             var result = await _companyPictureService.AddAsync(companyPictureAddDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -27,7 +27,7 @@ namespace EsitCV.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(CompanyPictureUpdateDto companyPictureAddDto)
+        public async Task<IActionResult> UpdateAsync([FromQuery] CompanyPictureUpdateDto companyPictureAddDto)
         {
             var result = await _companyPictureService.UpdateAsync(companyPictureAddDto);
             if (result.ResultStatus == ResultStatus.Success)
