@@ -50,6 +50,7 @@ namespace EsitCV.Business.Concrete
             if (jobPostingAddDto.Questions.Count() > 0)
             {
                 var questions = Mapper.Map<List<Question>>(jobPostingAddDto.Questions);
+                jobPostingAddDto.Questions = new List<JobPostingQuestionAddDto>();
 
                 foreach (var question in questions)
                 {
