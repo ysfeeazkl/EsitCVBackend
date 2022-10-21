@@ -70,6 +70,8 @@ namespace EsitCV.Data.Concrete.Context
         {
 
             optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=apiesitc_esitcv_db;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
+            base.OnConfiguring(optionsBuilder);
+
             //optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=EsitCvDb;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
             //optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=EsitCvDb;Trusted_Connection=True;");
         }

@@ -37,6 +37,8 @@ namespace EsitCV.Business.Concrete
             if (companyIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir şirket bulunamadı");
 
+            var questions = Mapper.Map<List<Question>>(jobPostingAddDto.Questions);
+
             var jobPosting = Mapper.Map<JobPosting>(jobPostingAddDto);
             jobPosting.CreatedDate = DateTime.Now;
             //jobPosting.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
@@ -48,18 +50,18 @@ namespace EsitCV.Business.Concrete
             await DbContext.SaveChangesAsync();
 
             if (jobPostingAddDto.Questions.Count() > 0)
-            {
-                var questions = Mapper.Map<List<Question>>(jobPostingAddDto.Questions);
-                jobPostingAddDto.Questions = new List<JobPostingQuestionAddDto>();
-
-                foreach (var question in questions)
-                {
-                    question.JobPosting = jobPosting;
-                    question.JobPostingID = jobPosting.ID;
-                    //jobPosting.Questions.Add(question);
-
-                    await DbContext.Questions.AddAsync(question);
-                    await Task.Delay(10);
+            {                                                                            
+                                                                                         
+                jobPosting.Questions = new List<Question>();                             
+                                                                                         
+                foreach (var question in questions)                                      
+                {                                                                        
+                    question.JobPosting = jobPosting;                                    
+                    question.JobPostingID = jobPosting.ID;                               
+                    //jobPosting.Questions.Add(question);                                
+                                                                                         
+                    await DbContext.Questions.AddAsync(question);                        
+                    //await Task.Delay(10);
                 }
                 DbContext.JobPostings.Update(jobPosting);
                 await DbContext.SaveChangesAsync();
@@ -123,7 +125,7 @@ namespace EsitCV.Business.Concrete
             if (companyIsExist is null)
                 return new DataResult(ResultStatus.Wrong, "böyle bir şirket bulunamadı");
 
-            var query = DbContext.Set<JobPosting>().Include(a=>a.Questions).Where(a => a.CompanyID == id).AsNoTracking();
+            var query = DbContext.Set<JobPosting>().Include(a=>a.Questions).Include(a => a.JobApplications).Where(a => a.CompanyID == id).AsNoTracking();
             if (query.Count() < 1)
                 return new DataResult(ResultStatus.Wrong, "herhangi bir iş ilanı bulunamadı");
 
@@ -132,7 +134,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetByIdAsync(int id)
         {
-            var jobPosting = await DbContext.JobPostings.SingleOrDefaultAsync(a => a.ID == id);
+            var jobPosting =  DbContext.JobPostings.Where(a => a.ID == id).Include(a => a.Questions).Include(a => a.JobApplications);
             if (jobPosting is null)
                 return new DataResult(ResultStatus.Wrong, "böyle bir iş ilanı bulunamadı");
             return new DataResult(ResultStatus.Success, jobPosting);
