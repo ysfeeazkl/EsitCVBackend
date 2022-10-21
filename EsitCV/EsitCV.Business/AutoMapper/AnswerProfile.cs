@@ -15,6 +15,7 @@ namespace EsitCV.Business.AutoMapper
         {
             CreateMap<AnswerAddDto, Answer>();
             CreateMap<AnswerUpdateDto, Answer>();
+            CreateMap<JobApplicationAnswerAddDto, Answer>();
         }
     }
 }

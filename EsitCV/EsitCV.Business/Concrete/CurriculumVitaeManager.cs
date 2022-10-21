@@ -57,13 +57,12 @@ namespace EsitCV.Business.Concrete
             curriculumVitae.FileName = (string)result.Data;
             curriculumVitae.User = userIsExist;
             curriculumVitae.UserID = userIsExist.ID;
+            await DbContext.CurriculumVitaes.AddAsync(curriculumVitae);
+
 
             userIsExist.CurriculumVitae = curriculumVitae;
             userIsExist.CurriculumVitaeID = curriculumVitae.ID;
 
-
-
-            await DbContext.CurriculumVitaes.AddAsync(curriculumVitae);
             DbContext.Users.Update(userIsExist);
             await DbContext.SaveChangesAsync();
 

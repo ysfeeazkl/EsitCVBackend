@@ -17,6 +17,8 @@ using EsitCV.Shared.Utilities.Results.ComplexTypes;
 using Microsoft.AspNetCore.Http;
 using EsitCV.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using EsitCV.Entities.Dtos.AnswerDtos;
+using EsitCV.Entities.Dtos.JobPostingDtos;
 
 namespace EsitCV.Business.Concrete
 {
@@ -38,13 +40,15 @@ namespace EsitCV.Business.Concrete
             var jobPosting = await DbContext.JobPostings.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.JobPostingID);
             if (jobPosting is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir iş ilanı bulunamadı");
-            var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.CurriculumVitaeID);
+            var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == userIsExist.ID);
             if (cvIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
-          
+
+            var answers = Mapper.Map<List<Answer>>(jobApplicationAddDto.Answers);
+
             var jobApplication = Mapper.Map<JobApplication>(jobApplicationAddDto);
             jobApplication.CreatedDate = DateTime.Now;
-            jobApplication.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            //jobApplication.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             jobApplication.User = userIsExist;
             jobApplication.UserID = userIsExist.ID;
@@ -53,13 +57,33 @@ namespace EsitCV.Business.Concrete
             jobApplication.JobPostingID = jobPosting.ID;
             jobApplication.JobPosting= jobPosting;
 
-            jobPosting.JobApplications.Add(jobApplication);
-
+            //jobPosting.JobApplications.Add(jobApplication);
             DbContext.JobPostings.Update(jobPosting);
             await DbContext.JobApplications.AddAsync(jobApplication);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "İş ilanı başarıyla Eklendi.", jobApplication);
+
+            if (jobApplicationAddDto.Answers.Count() > 0)
+            {
+
+                jobApplication.Answers = new List<Answer>();
+
+                foreach (var answer in answers)
+                {
+                    answer.JobApplication = jobApplication;
+                    answer.JobApplicationID = jobApplication.ID;
+                    //jobPosting.Questions.Add(question);                                
+
+                    await DbContext.Answers.AddAsync(answer);
+                    //await Task.Delay(10);
+                }
+                DbContext.JobApplications.Update(jobApplication);
+                await DbContext.SaveChangesAsync(); //job application ve answer arasında ki bağlantıdan dolayı burası patlıyor
+                return new DataResult(ResultStatus.Success, "İş başvurusu ve cevapları başarıyla Eklendi.", jobPosting);
+
+            }
+
+            return new DataResult(ResultStatus.Success, "İş başvurusu başarıyla Eklendi.", jobApplication);
         }
 
 
@@ -73,7 +97,7 @@ namespace EsitCV.Business.Concrete
 
             var jobApplication = Mapper.Map<JobApplication>(jobApplicationUpdateDto);
             jobApplication.CreatedDate = DateTime.Now;
-            jobApplication.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            //jobApplication.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             //jobApplication.CurriculumVitaeID = cvIsExist.ID;
             //jobApplication.CurriculumVitae = cvIsExist;
@@ -81,7 +105,7 @@ namespace EsitCV.Business.Concrete
             DbContext.JobApplications.Update(jobApplication);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "İş ilanı başarıyla güncellendi.", jobApplication);
+            return new DataResult(ResultStatus.Success, "İş başvurusu başarıyla güncellendi.", jobApplication);
         }
 
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
@@ -120,7 +144,7 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Wrong, "böyle bir kullanıcı bulunamadı");
             var query = DbContext.Set<JobPosting>().Where(a => a.CompanyID == id).AsNoTracking();
             if (query.Count() < 1)
-                return new DataResult(ResultStatus.Wrong, "herhangi bir iş başvurusu bulunamadı");
+                return new DataResult(ResultStatus.Wrong, "herhangi bir iş ilanı bulunamadı");
 
             return new DataResult(ResultStatus.Success, query);
         }
