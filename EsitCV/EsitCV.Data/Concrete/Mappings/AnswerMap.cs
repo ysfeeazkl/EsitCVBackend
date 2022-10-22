@@ -21,6 +21,8 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.Property(u => u.Content).HasMaxLength(200);
 
             builder.HasOne<JobApplication>(a => a.JobApplication).WithMany(a => a.Answers).HasForeignKey(a => a.JobApplicationID).OnDelete(DeleteBehavior.NoAction);
+            //builder.HasOne<JobPosting>(a => a.JobPosting).WithMany(a => a.Questions).HasForeignKey(a => a.JobPostingID).OnDelete(DeleteBehavior.NoAction);
+
             builder.HasOne<Question>(a => a.Question).WithMany(a => a.Answers).HasForeignKey(a => a.QuestionID).OnDelete(DeleteBehavior.NoAction);
             builder.ToTable("Answers");
         }
