@@ -10,5 +10,10 @@
 --özellikleri geliştirmeyi ve kullanıcıya entegre etmeye başla
 
 
+**Hata ve bug
+--hatanın sebebini anlamış gibiyim şimdi şirketin natro hesabından projeyi yayınlayacaüım deneme amaçlı
+--ve fahax ı turhostta yayınlayacağım
+
+
 **Son yapılanlar 
 --Özellik entitylerinin map sınmıfları oluşturuldu
