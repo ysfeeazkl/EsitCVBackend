@@ -16,7 +16,7 @@ namespace EsitCV.Entities.Abstract.Features
         public virtual T ModifiedByUserId { get; set; }
         public virtual DateTime? CreatedDate { get; set; } = DateTime.Now;
         public virtual DateTime? ModifiedDate { get; set; }
-        //public T UserProfileID { get; set; }
-        //public UserProfile UserProfile { get; set; }
+        public T UserProfileID { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 }

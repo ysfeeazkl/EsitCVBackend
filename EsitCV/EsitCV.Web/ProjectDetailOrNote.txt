@@ -1,19 +1,23 @@
 ﻿selamlar buraya yapacakları ve son kalan şeyleri falan filan yazcam
 
 **KIRMIZI UYARI
---Turhostta çıkan hata nie çözülmüyo onu çöz
+--Turhostta ki hata bizden kaynaklanmıyor destek talebinde bulunuldu
 
 **Sarı hata
 --Answer ve JobApplication ilişkisine tekrar bak ve çıkan hatayı çöz
 
 **sonra yapılacak işler
 --özellikleri geliştirmeyi ve kullanıcıya entegre etmeye başla
+--projeyi natroda yayınla
 
 
 **Hata ve bug
 --hatanın sebebini anlamış gibiyim şimdi şirketin natro hesabından projeyi yayınlayacaüım deneme amaçlı
---ve fahax ı turhostta yayınlayacağım
+--ve fahax ı turhostta yayınlayacağım --fahaxı turhostta yayınladım ve aynı hatayı aldım yani sorun benim projemle alakalı değil
+
+
 
 
 **Son yapılanlar 
 --Özellik entitylerinin map sınmıfları oluşturuldu
+

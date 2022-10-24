@@ -18,7 +18,17 @@ namespace EsitCV.Data.Concrete.Mappings
         {
             builder.HasKey(u => u.ID);
             builder.Property(u => u.ID).ValueGeneratedOnAdd();
-          
+
+            builder.Property(u => u.Name).IsRequired();
+            builder.Property(u => u.Name).HasMaxLength(50);
+            builder.Property(u => u.Content).IsRequired();
+            builder.Property(u => u.Content).HasMaxLength(500);
+            builder.Property(u => u.IssuingBodyName).IsRequired();
+
+            builder.HasOne<UserProfile>(a => a.UserProfile).WithMany(a => a.LicenseOrCertificates).HasForeignKey(a => a.UserProfileID).OnDelete(DeleteBehavior.NoAction);
+
+
+            builder.ToTable("LicenseOrCerificates");
         }
     }
 }

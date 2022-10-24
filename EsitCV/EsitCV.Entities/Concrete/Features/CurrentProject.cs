@@ -10,5 +10,8 @@ namespace EsitCV.Entities.Concrete.Features
 {
     public class CurrentProject : FeaturesBase<int>, IFeatures, IEntity
     {
+        public string Name{ get; set; }
+        public string Content{ get; set; }
+        public string ProjectUrl{ get; set; }
     }
 }
