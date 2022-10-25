@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EsitCV.Entities.ComplexTypes;
+using EsitCV.Entities.Dtos.FeaturesDtos.LicenseOrCertificateDtos;
+using EsitCV.Entities.Dtos.FeaturesDtos.OrganizationDtos;
 using EsitCV.Shared.Utilities.Results.Abstract;
 
 namespace EsitCV.Business.Abstract
 {
     public interface IOrganizationService
     {
-        Task<IDataResult> AddAsync();
-        Task<IDataResult> UpdateAsync();
+        Task<IDataResult> AddAsync(OrganizationAddDto organizationAddDto);
+        Task<IDataResult> UpdateAsync(OrganizationUpdateDto organizationUpdateDto);
         Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy);
         Task<IDataResult> GetByIdAsync(int id);
         Task<IDataResult> GetByProfileIdAsync(int id);

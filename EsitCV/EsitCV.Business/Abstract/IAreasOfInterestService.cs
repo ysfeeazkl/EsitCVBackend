@@ -1,4 +1,6 @@
 ﻿using EsitCV.Entities.ComplexTypes;
+using EsitCV.Entities.Dtos.FeaturesDtos.AboutDtos;
+using EsitCV.Entities.Dtos.FeaturesDtos.AreasOfInterestDtos;
 using EsitCV.Shared.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,8 @@ namespace EsitCV.Business.Abstract
 {
     public interface IAreasOfInterestService
     {
-        Task<IDataResult> AddAsync();
-        Task<IDataResult> UpdateAsync();
+        Task<IDataResult> AddAsync(AreasOfInterestAddDto areasOfInterestAddDto);
+        Task<IDataResult> UpdateAsync(AreasOfInterestUpdateDto areasOfInterestUpdateDto);
         Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy);
         Task<IDataResult> GetByIdAsync(int id);
         Task<IDataResult> GetByProfileIdAsync(int id);
