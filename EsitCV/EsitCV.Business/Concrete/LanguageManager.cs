@@ -9,6 +9,7 @@ using EsitCV.Business.Abstract;
 using EsitCV.Business.Utilities;
 using EsitCV.Data.Concrete.Context;
 using AutoMapper;
+using EsitCV.Entities.Dtos.FeaturesDtos.LanguageDtos;
 
 namespace EsitCV.Business.Concrete
 {
@@ -19,7 +20,7 @@ namespace EsitCV.Business.Concrete
 
         }
 
-        public Task<IDataResult> AddAsync()
+        public Task<IDataResult> AddAsync(LanguageAddDto languageAddDto)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +50,7 @@ namespace EsitCV.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult> UpdateAsync()
+        public Task<IDataResult> UpdateAsync(LanguageUpdateDto languageUpdateDto)
         {
             throw new NotImplementedException();
         }

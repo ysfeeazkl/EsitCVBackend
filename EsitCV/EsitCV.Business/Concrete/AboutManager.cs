@@ -8,6 +8,7 @@ using EsitCV.Business.Abstract;
 using EsitCV.Business.Utilities;
 using EsitCV.Data.Concrete.Context;
 using EsitCV.Entities.ComplexTypes;
+using EsitCV.Entities.Dtos.FeaturesDtos.AboutDtos;
 using EsitCV.Shared.Utilities.Results.Abstract;
 
 namespace EsitCV.Business.Concrete
@@ -19,7 +20,7 @@ namespace EsitCV.Business.Concrete
 
         }
 
-        public Task<IDataResult> AddAsync()
+        public Task<IDataResult> AddAsync(AboutAddDto aboutAddDto)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +50,7 @@ namespace EsitCV.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult> UpdateAsync()
+        public Task<IDataResult> UpdateAsync(AboutUpdateDto aboutUpdateDto)
         {
             throw new NotImplementedException();
         }
