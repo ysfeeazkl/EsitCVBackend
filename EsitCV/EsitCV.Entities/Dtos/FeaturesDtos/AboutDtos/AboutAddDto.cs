@@ -9,7 +9,6 @@ namespace EsitCV.Entities.Dtos.FeaturesDtos.AboutDtos
 {
     public class AboutAddDto: FeaturesDtoBase<int>
     {
-        public string ID { get; set; }
         public string Content { get; set; }
     }
 }

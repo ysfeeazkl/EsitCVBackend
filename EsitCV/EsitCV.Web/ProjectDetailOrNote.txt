@@ -7,8 +7,8 @@
 --Answer ve JobApplication ilişkisine tekrar bak ve çıkan hatayı çöz
 
 **sonra yapılacak işler
---özellikleri geliştirmeyi ve kullanıcıya entegre etmeye başla
---projeyi natroda yayınla
+--turhost da değişen sunucuya projeyi kur
+--özelliklerin validationlarını yaz ve manager classlarına başla
 
 
 **Hata ve bug
@@ -20,4 +20,5 @@
 
 **Son yapılanlar 
 --Özellik entitylerinin map sınıfları dolduruldu ve migration alındı
+--Özelliklerin dto,profile,service update'i yapıldı 
 

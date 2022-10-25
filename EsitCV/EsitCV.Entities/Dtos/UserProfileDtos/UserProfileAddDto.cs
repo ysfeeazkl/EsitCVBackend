@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.UserProfileDtos
 {
-    public class UserProfileAddDto
+    public class UserProfileAddDto //buna çok gerek kalmayabilir user register olduğunda userProfile oluşturcam ztn ama kalsın
     {
         public int UserID { get; set; }
     }

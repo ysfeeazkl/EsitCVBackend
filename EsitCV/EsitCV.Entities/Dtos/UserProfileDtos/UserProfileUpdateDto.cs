@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.UserProfileDtos
 {
-    public class UserProfileUpdateDto
+    public class UserProfileUpdateDto //burası düzenlenecek özelliklerin listesi gibi bir şey eklenecek
     {
         public int UserID { get; set; }
     }
