@@ -20,7 +20,6 @@ namespace EsitCV.Data.Concrete.Mappings
 
             builder.HasOne<About>(a => a.About).WithOne(a => a.UserProfile).HasForeignKey<About>(c => c.UserProfileID);
 
-
             builder.ToTable("UserProfiles");
         }
     }

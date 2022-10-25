@@ -17,6 +17,7 @@ using EsitCV.Entities.Concrete;
 using EsitCV.Business.ValidationRules.FluentValidation.AnswerValidators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace EsitCV.Business.Concrete
 {
@@ -38,7 +39,7 @@ namespace EsitCV.Business.Concrete
 
             var answer = Mapper.Map<Answer>(answerAddDto);
             answer.CreatedDate = DateTime.Now;
-            answer.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            //answer.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserID").Value);
 
             answer.Question = questionsIsExist;
             answer.QuestionID = questionsIsExist.ID;
@@ -47,7 +48,7 @@ namespace EsitCV.Business.Concrete
             await DbContext.Answers.AddAsync(answer);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "İlan sorusu başarıyla Eklendi.", answer);
+            return new DataResult(ResultStatus.Success, "Soru cevabı başarıyla Eklendi.", answer);
         }
         public async Task<IDataResult> UpdateAsync(AnswerUpdateDto answerUpdateDto)
         {
@@ -59,7 +60,7 @@ namespace EsitCV.Business.Concrete
 
             var answer = Mapper.Map<Answer>(answerUpdateDto);
             answer.ModifiedDate = DateTime.Now;
-            answer.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);           
+            //answer.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);           
 
 
             DbContext.Answers.Update(answer);

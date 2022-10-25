@@ -19,5 +19,5 @@
 
 
 **Son yapılanlar 
---Özellik entitylerinin map sınmıfları oluşturuldu
+--Özellik entitylerinin map sınıfları dolduruldu ve migration alındı
 

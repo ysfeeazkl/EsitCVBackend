@@ -45,7 +45,7 @@ namespace EsitCV.Data.Concrete.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AnswerMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new CompanyAndOperationClaimMap());
             modelBuilder.ApplyConfiguration(new CompanyMap());
             modelBuilder.ApplyConfiguration(new CompanyPictureMap());
@@ -58,11 +58,12 @@ namespace EsitCV.Data.Concrete.Context
             modelBuilder.ApplyConfiguration(new QuestionMap());
             modelBuilder.ApplyConfiguration(new UserAndOperationClaimMap());
             modelBuilder.ApplyConfiguration(new UserAndDisabilityMap());
-            modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new UserPictureMap());
             modelBuilder.ApplyConfiguration(new UserTokenMap());
             modelBuilder.ApplyConfiguration(new DisabilityMap());
             modelBuilder.ApplyConfiguration(new UserAndDisabilityMap());
+            modelBuilder.ApplyConfiguration(new AnswerMap());
+
 
             modelBuilder.ApplyConfiguration(new UserProfileMap());
             modelBuilder.ApplyConfiguration(new AboutMap());
@@ -79,11 +80,10 @@ namespace EsitCV.Data.Concrete.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=apiesitc_esitcv_db;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
+            optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=EsitCvDb;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
             base.OnConfiguring(optionsBuilder);
 
-            //optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=EsitCvDb;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
+            //optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=apiesitc_esitcv_db;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
             //optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=EsitCvDb;Trusted_Connection=True;");
         }
     }
