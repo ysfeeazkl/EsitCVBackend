@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.LanguageDtos
 {
-    internal class LanguageUpdateDto
+    public class LanguageUpdateDto
     {
     }
 }

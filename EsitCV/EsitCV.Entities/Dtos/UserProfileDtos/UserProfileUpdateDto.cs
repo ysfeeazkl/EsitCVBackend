@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.UserProfileDtos
 {
-    internal class UserProfileUpdateDto
+    public class UserProfileUpdateDto
     {
     }
 }

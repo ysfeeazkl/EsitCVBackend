@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.AreasOfInterestDtos
 {
-    internal class AreasOfInterestAddDto
+    public class AreasOfInterestAddDto
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.HobbieDtos
 {
-    internal class HobbieAddDto
+    public class HobbieAddDto
     {
     }
 }

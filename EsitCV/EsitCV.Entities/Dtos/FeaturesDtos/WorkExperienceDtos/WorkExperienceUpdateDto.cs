@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.WorkExperienceDtos
 {
-    internal class WorkExperienceUpdateDto
+    public class WorkExperienceUpdateDto
     {
     }
 }

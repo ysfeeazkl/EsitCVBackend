@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.LicenseOrCertificateDtos
 {
-    internal class LicenseOrCertificateUpdateDto
+    public class LicenseOrCertificateUpdateDto
     {
     }
 }

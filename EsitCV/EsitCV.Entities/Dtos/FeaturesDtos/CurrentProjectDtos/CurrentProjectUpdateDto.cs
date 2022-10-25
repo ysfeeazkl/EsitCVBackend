@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.CurrentProjectDtos
 {
-    internal class CurrentProjectUpdateDto
+    public class CurrentProjectUpdateDto
     {
     }
 }
