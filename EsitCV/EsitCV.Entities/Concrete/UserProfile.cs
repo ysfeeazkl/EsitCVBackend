@@ -21,8 +21,6 @@ namespace EsitCV.Entities.Concrete
         public ICollection<CurrentProject> CurrentProjects { get; set; }
         public ICollection<WorkExperience> WorkExperiences { get; set; }
         public ICollection<Organization> Organizations { get; set; }
-
-
         public User User{ get; set; }
         public int UserID{ get; set; }
     }

@@ -21,6 +21,9 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.Property(u => u.Content).IsRequired();
             builder.Property(u => u.Content).HasMaxLength(500);
 
+            //builder.HasOne<UserProfile>(a => a.UserProfile).WithOne(a => a.About).HasForeignKey<About>(c => c.UserProfileID);
+
+
             builder.ToTable("Abouts");
         }
     }

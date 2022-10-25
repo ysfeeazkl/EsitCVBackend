@@ -13,17 +13,17 @@ namespace EsitCV.Data.Concrete.Context
 {
     public class EsitCVContext : DbContext
     {
-        //public DbSet<Disability> Disabilities { get; set; }
-        //public DbSet<About> Abouts { get; set; }
-        //public DbSet<AreasOfInterest> AreasOfInterests { get; set; }
-        //public DbSet<Course> Courses { get; set; }
-        //public DbSet<CurrentProject> CurrentProjects { get; set; }
-        //public DbSet<Education> Educations { get; set; }
-        //public DbSet<Hobbie> Hobbies { get; set; }
-        //public DbSet<Language> Language { get; set; }
-        //public DbSet<LicenseOrCertificate> LicenseOrCertificates { get; set; }
-        //public DbSet<Organization> Organizations { get; set; }
-        //public DbSet<WorkExperience> WorkExperiences { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<AreasOfInterest> AreasOfInterests { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CurrentProject> CurrentProjects { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Hobbie> Hobbies { get; set; }
+        public DbSet<Language> Language { get; set; }
+        public DbSet<LicenseOrCertificate> LicenseOrCertificates { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<WorkExperience> WorkExperiences { get; set; }
+
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyAndOperationClaim> CompanyAndOperationClaims { get; set; }
@@ -63,6 +63,17 @@ namespace EsitCV.Data.Concrete.Context
             modelBuilder.ApplyConfiguration(new UserTokenMap());
             modelBuilder.ApplyConfiguration(new DisabilityMap());
             modelBuilder.ApplyConfiguration(new UserAndDisabilityMap());
+
+            modelBuilder.ApplyConfiguration(new UserProfileMap());
+            modelBuilder.ApplyConfiguration(new AboutMap());
+            modelBuilder.ApplyConfiguration(new AreasOfInterestMap());
+            modelBuilder.ApplyConfiguration(new CourseMap());
+            modelBuilder.ApplyConfiguration(new CurrentProjectMap());
+            modelBuilder.ApplyConfiguration(new EducationMap());
+            modelBuilder.ApplyConfiguration(new HobbieMap());
+            modelBuilder.ApplyConfiguration(new LanguageMap());
+            modelBuilder.ApplyConfiguration(new LicenseOrCertificateMap());
+            modelBuilder.ApplyConfiguration(new OrganizationMap());
 
         }
 
