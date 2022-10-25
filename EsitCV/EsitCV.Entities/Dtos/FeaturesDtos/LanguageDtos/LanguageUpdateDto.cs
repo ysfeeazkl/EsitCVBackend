@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EsitCV.Entities.Abstract.Features;
+using EsitCV.Entities.ComplexTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace EsitCV.Entities.Dtos.FeaturesDtos.LanguageDtos
 {
-    public class LanguageUpdateDto
+    public class LanguageUpdateDto : FeaturesUpdateDtoBase<int>
     {
+        public string Name { get; set; }
+        public LanguageLevel Level { get; set; }
     }
 }

@@ -8,5 +8,6 @@ namespace EsitCV.Entities.Dtos.UserProfileDtos
 {
     public class UserProfileUpdateDto
     {
+        public int UserID { get; set; }
     }
 }
