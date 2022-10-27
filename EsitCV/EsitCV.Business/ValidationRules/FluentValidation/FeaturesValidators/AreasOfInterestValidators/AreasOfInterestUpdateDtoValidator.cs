@@ -14,6 +14,8 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Ar
     {
         public AreasOfInterestUpdateDtoValidator()
         {
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.Name).NotNull();
 
         }
     }

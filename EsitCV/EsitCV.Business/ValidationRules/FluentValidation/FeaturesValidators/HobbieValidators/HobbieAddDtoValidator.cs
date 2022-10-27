@@ -13,6 +13,7 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Ho
     {
         public HobbieAddDtoValidator()
         {
+            RuleFor(a => a.Name).NotNull();
 
         }
     }

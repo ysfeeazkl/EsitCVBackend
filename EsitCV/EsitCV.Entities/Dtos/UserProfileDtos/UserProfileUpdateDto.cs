@@ -8,6 +8,7 @@ namespace EsitCV.Entities.Dtos.UserProfileDtos
 {
     public class UserProfileUpdateDto //burası düzenlenecek özelliklerin listesi gibi bir şey eklenecek
     {
+        public int ID { get; set; }
         public int UserID { get; set; }
     }
 }

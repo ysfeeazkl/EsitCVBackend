@@ -13,7 +13,11 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Or
     {
         public OrganizationUpdateDtoValidator()
         {
-
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.Name).NotNull();
+            RuleFor(a => a.StartDate).NotNull();
+            RuleFor(a => a.Content).NotNull();
+            RuleFor(a => a.IssuingBodyName).NotNull();
         }
     }
 }

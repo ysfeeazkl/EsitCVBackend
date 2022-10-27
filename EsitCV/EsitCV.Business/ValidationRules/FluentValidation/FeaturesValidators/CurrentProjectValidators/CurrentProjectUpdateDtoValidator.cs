@@ -13,7 +13,10 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Cu
     {
         public CurrentProjectUpdateDtoValidator()
         {
-
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.Name).NotNull();
+            RuleFor(a => a.ProjectUrl).NotNull();
+            RuleFor(a => a.Content).NotNull();
         }
     }
 }

@@ -13,6 +13,9 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.La
     {
         public LanguageUpdateDtoValidator()
         {
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.Level).NotNull();
+            RuleFor(a => a.Name).NotNull();
 
         }
     }

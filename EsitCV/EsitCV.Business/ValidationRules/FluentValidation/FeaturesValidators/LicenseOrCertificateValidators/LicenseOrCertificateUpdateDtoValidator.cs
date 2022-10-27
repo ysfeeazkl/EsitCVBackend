@@ -14,7 +14,11 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Li
     {
         public LicenseOrCertificateUpdateDtoValidator()
         {
-
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.Name).NotNull();
+            RuleFor(a => a.ReceivedDate).NotNull();
+            RuleFor(a => a.Content).NotNull();
+            RuleFor(a => a.IssuingBodyName).NotNull();
         }
     }
 }

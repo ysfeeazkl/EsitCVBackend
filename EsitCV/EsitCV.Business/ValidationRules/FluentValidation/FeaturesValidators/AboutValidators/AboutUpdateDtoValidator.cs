@@ -13,7 +13,8 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Ab
     {
         public AboutUpdateDtoValidator()
         {
-
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.Content).NotNull();
         }
     }
 }

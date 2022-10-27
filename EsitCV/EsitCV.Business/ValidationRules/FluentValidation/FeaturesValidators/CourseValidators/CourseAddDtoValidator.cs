@@ -13,6 +13,9 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Co
     {
         public CourseAddDtoValidator()
         {
+            RuleFor(a => a.Name).NotNull();
+            RuleFor(a => a.ReceivedDate).NotNull();
+            RuleFor(a => a.Content).NotNull();
 
         }
     }

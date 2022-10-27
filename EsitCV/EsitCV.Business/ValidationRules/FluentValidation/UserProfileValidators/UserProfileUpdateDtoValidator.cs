@@ -12,6 +12,8 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.UserProfileValidators
     {
         public UserProfileUpdateDtoValidator()
         {
+            RuleFor(a => a.ID);
+            RuleFor(a => a.UserID);
 
         }
     }

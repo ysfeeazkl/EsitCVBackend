@@ -13,7 +13,14 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Ed
     {
         public EducationUpdateDtoValidator()
         {
-
+            RuleFor(a => a.ID).NotNull();
+            RuleFor(a => a.InstitutionName).NotNull();
+            RuleFor(a => a.Activity).NotNull();
+            RuleFor(a => a.Degree).NotNull();
+            RuleFor(a => a.Content).NotNull();
+            RuleFor(a => a.EducationCategory).NotNull();
+            RuleFor(a => a.StartDate).NotNull();
+            RuleFor(a => a.FinishDate).NotNull();
         }
     }
 }

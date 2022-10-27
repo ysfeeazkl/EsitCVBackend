@@ -14,7 +14,7 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.Ab
     {
         public AboutAddDtoValidator()
         {
-
+            RuleFor(a => a.Content).NotNull();
         }
     }
 }
