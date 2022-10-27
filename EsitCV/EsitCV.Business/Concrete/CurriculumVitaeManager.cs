@@ -121,6 +121,7 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Success, filteredQuery);
             }
             return new DataResult(ResultStatus.Success, query);
+
         }
 
         public async Task<IDataResult> GetByIdAsync(int id)

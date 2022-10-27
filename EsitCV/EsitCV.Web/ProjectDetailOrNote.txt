@@ -6,10 +6,6 @@
 **Sarı hata
 --Answer ve JobApplication ilişkisine tekrar bak ve çıkan hatayı çöz
 
-**sonra yapılacak işler
---turhost da değişen sunucuya projeyi kur
---özelliklerin validationlarını yaz ve manager classlarına başla
-
 
 **Hata ve bug
 --hatanın sebebini anlamış gibiyim şimdi şirketin natro hesabından projeyi yayınlayacaüım deneme amaçlı
@@ -21,4 +17,10 @@
 **Son yapılanlar 
 --Özellik entitylerinin map sınıfları dolduruldu ve migration alındı
 --Özelliklerin dto,profile,service update'i yapıldı 
+--özelliklerin ve kullanıcı profillerinin validasyonları yazıldı
+--About manager güncellendi
+
+**sonra yapılacak işler
+--turhost da değişen sunucuya projeyi kur
+--Özellikler manager classları doldur
 
