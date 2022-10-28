@@ -16,7 +16,8 @@
 
 **Son yapılanlar 
 --Özellik entitylerinin map sınıfları dolduruldu ve migration alındı
---Özelliklerin dto,profile,service update'i yapıldı 
+--Özelliklerin dto63+
+,profile,service update'i yapıldı 
 --özelliklerin ve kullanıcı profillerinin validasyonları yazıldı
 --About manager güncellendi
 
