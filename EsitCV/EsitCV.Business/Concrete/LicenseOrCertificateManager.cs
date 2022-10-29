@@ -40,7 +40,7 @@ namespace EsitCV.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult> GetByProfileIdAsync(int id)
+        public Task<IDataResult> GetAllByProfileIdAsync(int id)
         {
             throw new NotImplementedException();
         }

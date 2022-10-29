@@ -138,6 +138,6 @@ namespace EsitCV.Business.Concrete
             return new DataResult(ResultStatus.Success, "İlgi alanı kısmı başarı ile silindi", areasOfInterest);
         }
 
-      
+
     }
 }

@@ -16,7 +16,7 @@ namespace EsitCV.Business.Abstract
         Task<IDataResult> UpdateAsync(WorkExperienceUpdateDto workExperienceUpdateDto);
         Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy);
         Task<IDataResult> GetByIdAsync(int id);
-        Task<IDataResult> GetByProfileIdAsync(int id);
+        Task<IDataResult> GetAllByProfileIdAsync(int id);
         Task<IDataResult> DeleteByIdAsync(int id);
         Task<IDataResult> HardDeleteByIdAsync(int id);
     }
