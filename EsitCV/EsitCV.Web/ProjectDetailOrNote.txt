@@ -16,12 +16,15 @@
 
 **Son yapılanlar 
 --Özellik entitylerinin map sınıfları dolduruldu ve migration alındı
---Özelliklerin dto63+
-,profile,service update'i yapıldı 
+--Özelliklerin profile,service update'i yapıldı 
 --özelliklerin ve kullanıcı profillerinin validasyonları yazıldı
 --About manager güncellendi
+--Özelliklerin kalan entitylerin manager classları yazıldı
+--UserProfile manager yazıldı
 
 **sonra yapılacak işler
---turhost da değişen sunucuya projeyi kur
---Özellikler manager classları doldur
+--Hostinger de projeyi yayınla test et
+--UserProfile de ki update methodunu geliştir, içine diğer tüm özellikleri alacak ve güncelleyecek şekilde daha komplike bir yapı kur
+--Özellik entitylerinin ve UserProfile ın Controller larını yaz
+
 

@@ -181,6 +181,8 @@ namespace EsitCV.Business.Concrete
             await DbContext.Users.AddAsync(user);
             await DbContext.SaveChangesAsync();
 
+            
+
             UserToken userToken = new UserToken
             {
                 UserID = user.ID,
@@ -197,6 +199,14 @@ namespace EsitCV.Business.Concrete
                 OperationClaimID = 2 //user
             };
             await DbContext.UserAndOperationClaims.AddAsync(userOperationClaim);
+
+
+            UserProfile userProfile = new UserProfile()
+            {
+                User = user,
+                UserID = user.ID,
+            };
+            await DbContext.UserProfiles.AddAsync(userProfile);
             await DbContext.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, $"Hoşgeldiniz Sayın {user.FirstName} {user.LastName}.", new UserWithTokenDto
             {
