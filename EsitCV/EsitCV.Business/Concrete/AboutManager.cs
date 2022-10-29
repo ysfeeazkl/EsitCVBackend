@@ -65,8 +65,8 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Error, "Bu profilin hakkında kısmı yok");
 
             var about = Mapper.Map<About>(aboutUpdateDto);
-            about.CreatedDate = DateTime.Now;
-            //jobPosting.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            about.ModifiedDate = DateTime.Now;
+            //about.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             DbContext.Abouts.Update(about);
             await DbContext.SaveChangesAsync();

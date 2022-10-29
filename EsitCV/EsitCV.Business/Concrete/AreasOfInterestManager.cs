@@ -55,8 +55,8 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Error, "Böyle bir Kullanıcı profili Bulunamadı");
          
             var areasOfInterest = Mapper.Map<AreasOfInterest>(areasOfInterestUpdateDto);
-            areasOfInterest.CreatedDate = DateTime.Now;
-            //areasOfInteres.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            areasOfInterest.ModifiedDate = DateTime.Now;
+            //areasOfInterest.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             DbContext.AreasOfInterests.Update(areasOfInterest);
             await DbContext.SaveChangesAsync();

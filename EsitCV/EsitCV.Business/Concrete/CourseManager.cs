@@ -18,14 +18,17 @@ using EsitCV.Shared.Utilities.Results.Concrete;
 using EsitCV.Shared.Utilities.Validation.FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.CourseValidators;
+using Microsoft.AspNetCore.Http;
 
 namespace EsitCV.Business.Concrete
 {
     public class CourseManager: ManagerBase, ICourseService
     {
-        public CourseManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
-        {
+        IHttpContextAccessor _httpContextAccessor;
 
+        public CourseManager(EsitCVContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(mapper, context)
+        {
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IDataResult> AddAsync(CourseAddDto courseAddDto)
@@ -55,8 +58,8 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Error, "Böyle bir Kullanıcı profili Bulunamadı");
 
             var course = Mapper.Map<Course>(courseUpdateDto);
-            course.CreatedDate = DateTime.Now;
-            //course.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            course.ModifiedDate = DateTime.Now;
+            //course.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             DbContext.Courses.Update(course);
             await DbContext.SaveChangesAsync();

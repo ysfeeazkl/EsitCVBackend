@@ -18,14 +18,17 @@ using EsitCV.Shared.Utilities.Results.Concrete;
 using EsitCV.Shared.Utilities.Validation.FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using EsitCV.Business.ValidationRules.FluentValidation.FeaturesValidators.CurrentProjectValidators;
+using Microsoft.AspNetCore.Http;
 
 namespace EsitCV.Business.Concrete
 {
     public class CurrentProjectManager: ManagerBase, ICurrentProjectService
     {
-        public CurrentProjectManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
-        {
+        IHttpContextAccessor _httpContextAccessor;
 
+        public CurrentProjectManager(EsitCVContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(mapper, context)
+        {
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IDataResult> AddAsync(CurrentProjectAddDto currentProjectAddDto)
@@ -55,8 +58,8 @@ namespace EsitCV.Business.Concrete
                 return new DataResult(ResultStatus.Error, "Böyle bir Kullanıcı profili Bulunamadı");
 
             var currentProject = Mapper.Map<CurrentProject>(currentProjectUpdateDto);
-            currentProject.CreatedDate = DateTime.Now;
-            //currentProject.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            currentProject.ModifiedDate = DateTime.Now;
+            //currentProject.ModifiedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
             DbContext.CurrentProjects.Update(currentProject);
             await DbContext.SaveChangesAsync();

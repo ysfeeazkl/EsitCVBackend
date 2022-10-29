@@ -10,14 +10,17 @@ using EsitCV.Business.Utilities;
 using AutoMapper;
 using EsitCV.Data.Concrete.Context;
 using EsitCV.Entities.Dtos.UserProfileDtos;
+using Microsoft.AspNetCore.Http;
 
 namespace EsitCV.Business.Concrete
 {
     public class UserProfileManager: ManagerBase, IUserProfileService
     {
-        public UserProfileManager(EsitCVContext context, IMapper mapper) : base(mapper, context)
-        {
+        IHttpContextAccessor _httpContextAccessor;
 
+        public UserProfileManager(EsitCVContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(mapper, context)
+        {
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public Task<IDataResult> AddAsync(UserProfileAddDto userProfileAddDto)
