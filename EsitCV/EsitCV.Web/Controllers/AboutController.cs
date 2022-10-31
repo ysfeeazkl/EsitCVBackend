@@ -36,7 +36,7 @@ namespace EsitCV.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
             var result = await _aboutService.GetAllAsync(isDeleted, isAscending, currentPage, pageSize, orderBy);
@@ -44,7 +44,7 @@ namespace EsitCV.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var result = await _aboutService.GetByIdAsync(id);
@@ -52,7 +52,7 @@ namespace EsitCV.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetByProfileIdAsync(int id)
         {
             var result = await _aboutService.GetByProfileIdAsync(id);
@@ -60,7 +60,7 @@ namespace EsitCV.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        [HttpPost("[action]")]
+        [HttpDelete("[action]")]
         public async Task<IActionResult> DeleteByIdAsync(int id)
         {
             var result = await _aboutService.DeleteByIdAsync(id);
@@ -68,7 +68,7 @@ namespace EsitCV.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        [HttpPost("[action]")]
+        [HttpDelete("[action]")]
         public async Task<IActionResult> HardDeleteByIdAsync(int id)
         {
             var result = await _aboutService.HardDeleteByIdAsync(id);
