@@ -37,7 +37,7 @@ namespace EsitCV.API.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
-            var result = await _currentProjectService.GetAllAsync(isDeleted, isAscending, currentPage, pageSize, orderBy);
+            var result = await _courseService.GetAllAsync(isDeleted, isAscending, currentPage, pageSize, orderBy);
             if (result.ResultStatus == ResultStatus.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -45,7 +45,7 @@ namespace EsitCV.API.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var result = await _currentProjectService.GetByIdAsync(id);
+            var result = await _courseService.GetByIdAsync(id);
             if (result.ResultStatus == ResultStatus.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -53,7 +53,7 @@ namespace EsitCV.API.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllByProfileIdAsync(int id)
         {
-            var result = await _currentProjectService.GetAllByProfileIdAsync(id);
+            var result = await _courseService.GetAllByProfileIdAsync(id);
             if (result.ResultStatus == ResultStatus.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -61,7 +61,7 @@ namespace EsitCV.API.Controllers
         [HttpDelete("[action]")]
         public async Task<IActionResult> DeleteByIdAsync(int id)
         {
-            var result = await _currentProjectService.DeleteByIdAsync(id);
+            var result = await _courseService.DeleteByIdAsync(id);
             if (result.ResultStatus == ResultStatus.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -69,7 +69,7 @@ namespace EsitCV.API.Controllers
         [HttpDelete("[action]")]
         public async Task<IActionResult> HardDeleteByIdAsync(int id)
         {
-            var result = await _currentProjectService.HardDeleteByIdAsync(id);
+            var result = await _courseService.HardDeleteByIdAsync(id);
             if (result.ResultStatus == ResultStatus.Success)
                 return Ok(result);
             return BadRequest(result);
