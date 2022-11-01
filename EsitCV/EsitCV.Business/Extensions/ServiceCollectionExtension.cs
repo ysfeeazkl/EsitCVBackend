@@ -43,6 +43,17 @@ namespace EsitCV.Business.Extensions
             services.AddScoped<IQuestionService, QuestionManager>();
             services.AddScoped<IAnswerService, AnswerManager>();
 
+            services.AddScoped<IUserProfileService, UserProfileManager>();
+            services.AddScoped<IAboutService, AboutManager>();
+            services.AddScoped<IAreasOfInterestService, AreasOfInterestManager>();
+            services.AddScoped<ICourseService, CourseManager>();
+            services.AddScoped<ICurrentProjectService, CurrentProjectManager>();
+            services.AddScoped<IEducationService, EducationManager>();
+            services.AddScoped<IHobbieService, HobbieManager>();
+            services.AddScoped<ILicenseOrCertificateService,LicenseOrCertificateManager>();
+            services.AddScoped<IOrganizationService, OrganizationManager>();
+            services.AddScoped<IWorkExperienceService, WorkExperienceManager>();
+
 
             return services;
 

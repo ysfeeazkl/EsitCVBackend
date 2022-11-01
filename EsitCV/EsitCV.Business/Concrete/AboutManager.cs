@@ -47,9 +47,15 @@ namespace EsitCV.Business.Concrete
             var about = Mapper.Map<About>(aboutAddDto);
             about.CreatedDate = DateTime.Now;
             //jobPosting.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
+            userProfileIsExist.AboutID = about.ID;
+            userProfileIsExist.About = about;
 
             await DbContext.Abouts.AddAsync(about);
             await DbContext.SaveChangesAsync();
+
+            DbContext.UserProfiles.Update(userProfileIsExist);
+            await DbContext.SaveChangesAsync();
+
 
             return new DataResult(ResultStatus.Success, "Hakkında kısımı başarıyla Eklendi.", about);
         }

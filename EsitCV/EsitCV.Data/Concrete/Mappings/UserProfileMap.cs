@@ -18,7 +18,7 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.HasKey(a => a.ID);
             builder.Property(a => a.ID).ValueGeneratedOnAdd();
 
-            builder.HasOne<About>(a => a.About).WithOne(a => a.UserProfile).HasForeignKey<About>(c => c.UserProfileID);
+            builder.HasOne<About>(a => a.About).WithOne(a => a.UserProfile).HasForeignKey<About>(c => c.UserProfileID).OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable("UserProfiles");
         }
