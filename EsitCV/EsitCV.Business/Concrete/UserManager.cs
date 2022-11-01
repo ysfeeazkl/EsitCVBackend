@@ -105,7 +105,7 @@ namespace EsitCV.Business.Concrete
             DbContext.Users.Remove(user);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "kullanıcı başarı ile arşivlendi");
+            return new DataResult(ResultStatus.Success, "kullanıcı başarı ile silindi");
         }
     }
 }

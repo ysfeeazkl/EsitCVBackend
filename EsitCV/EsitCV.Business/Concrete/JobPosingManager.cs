@@ -49,7 +49,7 @@ namespace EsitCV.Business.Concrete
             await DbContext.JobPostings.AddAsync(jobPosting);
             await DbContext.SaveChangesAsync();
 
-            if (jobPostingAddDto.Questions.Count() > 0)
+            if (jobPosting.Questions.Count() > 0)
             {                                                                            
                                                                                          
                 jobPosting.Questions = new List<Question>();                             

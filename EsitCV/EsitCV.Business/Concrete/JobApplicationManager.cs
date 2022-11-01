@@ -40,9 +40,13 @@ namespace EsitCV.Business.Concrete
             var jobPosting = await DbContext.JobPostings.SingleOrDefaultAsync(a => a.ID == jobApplicationAddDto.JobPostingID);
             if (jobPosting is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir iş ilanı bulunamadı");
+            var jobApplicationIsExist = await DbContext.JobApplications.SingleOrDefaultAsync(a => a.UserID == jobApplicationAddDto.UserID && a.JobPostingID == jobApplicationAddDto.JobPostingID );
+            if (jobApplicationIsExist is not null)
+                return new DataResult(ResultStatus.Error, "Bu ilana zaten başvurulmuş");
             var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == userIsExist.ID);
             if (cvIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
+          
 
             var answers = Mapper.Map<List<Answer>>(jobApplicationAddDto.Answers);
 
@@ -63,7 +67,7 @@ namespace EsitCV.Business.Concrete
             await DbContext.SaveChangesAsync();
 
 
-            if (jobApplicationAddDto.Answers.Count() > 0)
+            if (jobApplication.Answers.Count() > 0)
             {
 
                 jobApplication.Answers = new List<Answer>();
