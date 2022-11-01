@@ -19,7 +19,7 @@ namespace EsitCV.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(LicenseOrCertificateAddDto licenseOrCertificateAddDto)
+        public async Task<IActionResult> AddAsync([FromBody] LicenseOrCertificateAddDto licenseOrCertificateAddDto)
         {
             var result = await _licenseOrCertificateService.AddAsync(licenseOrCertificateAddDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -27,7 +27,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(LicenseOrCertificateUpdateDto licenseOrCertificateUpdateDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] LicenseOrCertificateUpdateDto licenseOrCertificateUpdateDto)
         {
             var result = await _licenseOrCertificateService.UpdateAsync(licenseOrCertificateUpdateDto);
             if (result.ResultStatus == ResultStatus.Success)

@@ -20,7 +20,7 @@ namespace EsitCV.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(LocationAddDto jobPostingAddDto)
+        public async Task<IActionResult> AddAsync([FromBody] LocationAddDto jobPostingAddDto)
         {
             var result = await _locationService.AddAsync(jobPostingAddDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -29,7 +29,7 @@ namespace EsitCV.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(LocationUpdateDto jobPostingAddDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] LocationUpdateDto jobPostingAddDto)
         {
             var result = await _locationService.UpdateAsync(jobPostingAddDto);
             if (result.ResultStatus == ResultStatus.Success)

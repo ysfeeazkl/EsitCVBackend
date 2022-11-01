@@ -20,7 +20,7 @@ namespace EsitCV.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(HobbieAddDto  hobbieAddDto)
+        public async Task<IActionResult> AddAsync([FromBody] HobbieAddDto  hobbieAddDto)
         {
             var result = await _hobbieService.AddAsync(hobbieAddDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -28,7 +28,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(HobbieUpdateDto hobbieUpdateDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] HobbieUpdateDto hobbieUpdateDto)
         {
             var result = await _hobbieService.UpdateAsync(hobbieUpdateDto);
             if (result.ResultStatus == ResultStatus.Success)

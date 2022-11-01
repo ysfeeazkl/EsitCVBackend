@@ -18,7 +18,7 @@ namespace EsitCV.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(CompanyUpdateDto companyUpdateDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] CompanyUpdateDto companyUpdateDto)
         {
             var result = await _companyService.UpdateAsync(companyUpdateDto);
             if (result.ResultStatus == ResultStatus.Success)

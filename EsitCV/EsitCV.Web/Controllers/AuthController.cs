@@ -33,7 +33,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> CompanyRegisterAsync(CompanyRegisterDto companyRegisterDto)
+        public async Task<IActionResult> CompanyRegisterAsync([FromBody] CompanyRegisterDto companyRegisterDto)
         {
             var result = await _authService.CompanyRegisterAsync(companyRegisterDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -41,7 +41,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> UserRegisterAsync(UserRegisterDto userRegisterDto)
+        public async Task<IActionResult> UserRegisterAsync([FromBody] UserRegisterDto userRegisterDto)
         {
             var result = await _authService.UserRegisterAsync(userRegisterDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -49,7 +49,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> CompanyLoginWithEmailAsync(CompanyLoginWithEmailDto companyLoginWithEmailDto)
+        public async Task<IActionResult> CompanyLoginWithEmailAsync([FromBody] CompanyLoginWithEmailDto companyLoginWithEmailDto)
         {
             var result = await _authService.CompanyLoginWithEmailAsync(companyLoginWithEmailDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -57,7 +57,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> UserLoginWithEmailAsync(UserLoginWithEmailDto userLoginWithEmailDto)
+        public async Task<IActionResult> UserLoginWithEmailAsync([FromBody] UserLoginWithEmailDto userLoginWithEmailDto)
         {
             var result = await _authService.UserLoginWithEmailAsync(userLoginWithEmailDto);
             if (result.ResultStatus == ResultStatus.Success)

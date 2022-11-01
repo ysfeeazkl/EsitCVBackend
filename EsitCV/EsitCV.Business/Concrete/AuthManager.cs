@@ -199,14 +199,13 @@ namespace EsitCV.Business.Concrete
                 OperationClaimID = 2 //user
             };
             await DbContext.UserAndOperationClaims.AddAsync(userOperationClaim);
-            await DbContext.SaveChangesAsync();
-
             UserProfile userProfile = new UserProfile()
             {
                 User = user,
                 UserID = user.ID,
                 AboutID=0,
             };
+
             await DbContext.UserProfiles.AddAsync(userProfile);
             await DbContext.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, $"Hoşgeldiniz Sayın {user.FirstName} {user.LastName}.", new UserWithTokenDto

@@ -22,11 +22,16 @@
 --Özelliklerin kalan entitylerin manager classları yazıldı
 --UserProfile manager yazıldı
 --Özellikler ve UserProfile  controller ı yazıldı
+--kayıt olma iş ilanı açma ve iş başvurusu düzenlendi 
+--bazı controller lara [FromBody] eklendi
 
 
 **sonra yapılacak işler
 --Hostinger de projeyi yayınla test et
 --UserProfile de ki update methodunu geliştir, içine diğer tüm özellikleri alacak ve güncelleyecek şekilde daha komplike bir yapı kur
+--JobPosting de ki question bağlantısına ve JobApplication da ki answer bağlantısı düzeltilecek
+--kullanıcı engel durumu eklenecek
+--controller lara [FromBody] eklenecek
 
 
 
