@@ -84,7 +84,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
-            IQueryable<About> query = DbContext.Set<About>().Include(a => a).Include(a=>a.UserProfile).ThenInclude(a=>a.User).AsNoTracking();
+            IQueryable<About> query = DbContext.Set<About>().Include(a=>a.UserProfile).ThenInclude(a=>a.User).AsNoTracking();
             if (isDeleted.HasValue)
                 query = query.Where(a => a.IsActive == isDeleted);
             switch (orderBy)
