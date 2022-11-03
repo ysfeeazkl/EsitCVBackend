@@ -20,7 +20,7 @@ namespace EsitCV.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(WorkExperienceAddDto workExperienceAddDto)
+        public async Task<IActionResult> AddAsync([FromBody] WorkExperienceAddDto workExperienceAddDto)
         {
             var result = await _workExperienceService.AddAsync(workExperienceAddDto);
             if (result.ResultStatus == ResultStatus.Success)
@@ -28,7 +28,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAsync(WorkExperienceUpdateDto workExperienceUpdateDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] WorkExperienceUpdateDto workExperienceUpdateDto)
         {
             var result = await _workExperienceService.UpdateAsync(workExperienceUpdateDto);
             if (result.ResultStatus == ResultStatus.Success)

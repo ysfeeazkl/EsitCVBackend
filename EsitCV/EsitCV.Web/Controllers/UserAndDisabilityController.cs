@@ -19,7 +19,7 @@ namespace EsitCV.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(UserAndDisabilityAddDto userAndDisabilityAddDto)
+        public async Task<IActionResult> AddAsync([FromBody] UserAndDisabilityAddDto userAndDisabilityAddDto)
         {
             var result = await _userAndDisabilityService.AddAsync(userAndDisabilityAddDto);
             if (result.ResultStatus == ResultStatus.Success)
