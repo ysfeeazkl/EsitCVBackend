@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -85,6 +86,8 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
+            var result = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)!.Value;
+
             IQueryable<About> query = DbContext.Set<About>().Include(a=>a.UserProfile).ThenInclude(a=>a.User).AsNoTracking();
             if (isDeleted.HasValue)
                 query = query.Where(a => a.IsActive == isDeleted);

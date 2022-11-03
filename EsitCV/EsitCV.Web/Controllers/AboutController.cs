@@ -3,13 +3,16 @@ using EsitCV.Entities.ComplexTypes;
 using EsitCV.Entities.Dtos.AnswerDtos;
 using EsitCV.Entities.Dtos.FeaturesDtos.AboutDtos;
 using EsitCV.Shared.Utilities.Results.ComplexTypes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace EsitCV.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles = "User")]
     public class AboutController : ControllerBase
     {
 
@@ -39,6 +42,7 @@ namespace EsitCV.API.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
+
             var result = await _aboutService.GetAllAsync(isDeleted, isAscending, currentPage, pageSize, orderBy);
             if (result.ResultStatus == ResultStatus.Success)
                 return Ok(result);
