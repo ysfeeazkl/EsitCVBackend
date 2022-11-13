@@ -46,7 +46,7 @@ namespace EsitCV.Business.Concrete
         }
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
-            IQueryable<User> query = DbContext.Set<User>().AsNoTracking();
+            IQueryable<User> query = DbContext.Set<User>().Include(a=>a.UserPicture).AsNoTracking();
             if (isDeleted.HasValue)
                 query = query.Where(a => a.IsActive == isDeleted);
             switch (orderBy)
@@ -75,7 +75,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetByIdAsync(int id)
         {
-            var user = await DbContext.Users.SingleOrDefaultAsync(a => a.ID == id);
+            var user = await DbContext.Users.Include(a=>a.UserPicture).SingleOrDefaultAsync(a => a.ID == id);
             if (user is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir kullanıcı bulunamadı");
             return new DataResult(ResultStatus.Success, user);
