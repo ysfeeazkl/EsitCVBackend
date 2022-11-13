@@ -77,7 +77,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetByIdAsync(int id)
         {
-            var company = await DbContext.Companies.SingleOrDefaultAsync(a => a.ID == id);
+            var company = await DbContext.Companies.Include(a=>a.CompanyPicture).SingleOrDefaultAsync(a => a.ID == id);
             if (company is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir şirket bulunamadı");
             return new DataResult(ResultStatus.Success, company);
