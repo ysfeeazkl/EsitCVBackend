@@ -34,6 +34,9 @@
 --kullanıcı engel durumu eklenecek
 --bearer muhabbetşne bakılcak
 
+--bu gün macte ilk defa kod yazıyorum ve sesim böyle
+
+
 
 
 
