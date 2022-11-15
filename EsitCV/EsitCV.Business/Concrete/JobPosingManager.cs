@@ -119,6 +119,11 @@ namespace EsitCV.Business.Concrete
             return new DataResult(ResultStatus.Success, query);
         }
 
+        public Task<IDataResult> GetAllByFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IDataResult> GetAllByCompanyIdAsync(int id)
         {
             var companyIsExist = await DbContext.Companies.SingleOrDefaultAsync(a => a.ID == id);
@@ -169,6 +174,6 @@ namespace EsitCV.Business.Concrete
             return new DataResult(ResultStatus.Success, "İş ilanı başarıyla silindi", jobPosting);
         }
 
-
+      
     }
 }

@@ -28,11 +28,10 @@
 
 
 **sonra yapılacak işler
---Hostinger de projeyi yayınla test et
 --UserProfile de ki update methodunu geliştir, içine diğer tüm özellikleri alacak ve güncelleyecek şekilde daha komplike bir yapı kur
 --JobPosting de ki question bağlantısına ve JobApplication da ki answer bağlantısı düzeltilecek
---kullanıcı engel durumu eklenecek
 --bearer muhabbetşne bakılcak
+--İş ilanı filtreleme eklenecek
 
 --bu gün macte ilk defa kod yazıyorum ve sesim böyle
 
