@@ -119,9 +119,24 @@ namespace EsitCV.Business.Concrete
             return new DataResult(ResultStatus.Success, query);
         }
 
-        public Task<IDataResult> GetAllByFilter()
+        public Task<IDataResult> GetAllByFilter(JobPostingFilterGetDto jobPostingFilterGetDto)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        class JobPostingFilterGetDto
+        {
+            public string Header { get; set; }
+            public string Content { get; set; }
+            public string Sector { get; set; }
+            public string JobPosition { get; set; }
+            public string LicenceDegree { get; set; }
+            public string Language { get; set; }
+            public TypeOfWork TypeOfWork { get; set; }
+
+            public int CompanyID { get; set; }
+
+
         }
 
         public async Task<IDataResult> GetAllByCompanyIdAsync(int id)

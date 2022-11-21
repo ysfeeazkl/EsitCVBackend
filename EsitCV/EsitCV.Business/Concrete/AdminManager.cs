@@ -20,5 +20,6 @@ namespace EsitCV.Business.Concrete
             _httpContextAccessor = httpContextAccessor;
         }
 
+
     }
 }
