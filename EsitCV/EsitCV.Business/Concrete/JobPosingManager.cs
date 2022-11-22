@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using EsitCV.Entities.Concrete;
 using EsitCV.Entities.Dtos.QuestionDtos;
+using StackExchange.Redis;
 
 namespace EsitCV.Business.Concrete
 {
@@ -119,24 +120,38 @@ namespace EsitCV.Business.Concrete
             return new DataResult(ResultStatus.Success, query);
         }
 
-        public Task<IDataResult> GetAllByFilter(JobPostingFilterGetDto jobPostingFilterGetDto)
+        public async Task<IDataResult> GetAllByFilter(JobPostingFilterGetDto jobPostingFilterGetDto)
         {
-            
-        }
+            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Company).AsNoTracking();
 
-        class JobPostingFilterGetDto
-        {
-            public string Header { get; set; }
-            public string Content { get; set; }
-            public string Sector { get; set; }
-            public string JobPosition { get; set; }
-            public string LicenceDegree { get; set; }
-            public string Language { get; set; }
-            public TypeOfWork TypeOfWork { get; set; }
+            if (jobPostingFilterGetDto.Header is not null)
+                query = query.Where(a => a.Header.Contains(jobPostingFilterGetDto.Header));
+            if (jobPostingFilterGetDto.Content is not null)
+                query = query.Where(a => a.Header.Contains(jobPostingFilterGetDto.Content));
+            if (jobPostingFilterGetDto.Sector is not null)
+                query = query.Where(a => a.Sector.Contains(jobPostingFilterGetDto.Sector));
+            if (jobPostingFilterGetDto.JobPosition is not null)
+                query = query.Where(a => a.JobPosition.Contains(jobPostingFilterGetDto.JobPosition));
+            if (jobPostingFilterGetDto.LicenceDegree is not null)
+                query = query.Where(a => a.LicenceDegree.Contains(jobPostingFilterGetDto.LicenceDegree));
+            if (jobPostingFilterGetDto.Language is not null)
+                query = query.Where(a => a.Language.Contains(jobPostingFilterGetDto.Language));
+            if (jobPostingFilterGetDto.TypeOfWork is not null)
+                query = query.Where(a => a.TypeOfWork == jobPostingFilterGetDto.TypeOfWork);
+            if (jobPostingFilterGetDto.CompanyID > 0)
+                query = query.Where(a => a.CompanyID == jobPostingFilterGetDto.CompanyID);
+            if (jobPostingFilterGetDto.Location is not null)
+            {
+                query = query.Where(a => a.Company.Location.Country.Contains(jobPostingFilterGetDto.Location.Country));
+                if (jobPostingFilterGetDto.Location.Province is not null)
+                    query = query.Where(a => a.Company.Location.Province.Contains(jobPostingFilterGetDto.Location.Province));
+                if (jobPostingFilterGetDto.Location.District is not null)
+                    query = query.Where(a => a.Company.Location.District.Contains(jobPostingFilterGetDto.Location.District));
+            }
 
-            public int CompanyID { get; set; }
-
-
+            if (query.Count() < 1)
+                return new DataResult(ResultStatus.Wrong, "Seçtiğniz filtrelemeye göre herhangi bir iş ilanı bulunamadı");
+            return new DataResult(ResultStatus.Success, query);
         }
 
         public async Task<IDataResult> GetAllByCompanyIdAsync(int id)
