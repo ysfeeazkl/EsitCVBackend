@@ -16,7 +16,7 @@ namespace EsitCV.API.Controllers
         {
             _jobPosingService = jobPosingService;
         }
-        
+
 
         [HttpPost("[action]")]
         public async Task<IActionResult> AddAsync([FromBody] JobPostingAddDto jobPostingAddDto)
@@ -43,7 +43,7 @@ namespace EsitCV.API.Controllers
             return BadRequest(result);
         }
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllByFilter([FromQuery]JobPostingFilterGetDto jobPostingFilterGetDto)
+        public async Task<IActionResult> GetAllByFilter([FromQuery] JobPostingFilterGetDto jobPostingFilterGetDto)
         {
             var result = await _jobPosingService.GetAllByFilter(jobPostingFilterGetDto);
             if (result.ResultStatus == ResultStatus.Success)

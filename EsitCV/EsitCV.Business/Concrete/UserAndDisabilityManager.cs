@@ -17,6 +17,7 @@ using EsitCV.Business.ValidationRules.FluentValidation.UserAndDisabilityValidato
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using EsitCV.Entities.Concrete;
+using System.Runtime.CompilerServices;
 
 namespace EsitCV.Business.Concrete
 {
@@ -112,7 +113,7 @@ namespace EsitCV.Business.Concrete
         {
             var userAndDisability = await DbContext.UserAndDisabilities.SingleOrDefaultAsync(a => a.UserID == userID && a.DisabilityID == disabilityID);
             if (userAndDisability is null)
-                return new DataResult(ResultStatus.Error, Messages.General.NotFoundArgument("Böyle bir engel ve kullanıcı eşleşmesi bulunamadı."));
+                return new DataResult(ResultStatus.Error,"Böyle bir engel ve kullanıcı eşleşmesi bulunamadı.");
             DbContext.UserAndDisabilities.Remove(userAndDisability);
             await DbContext.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, $"başarıyla silindi.", userAndDisability);
