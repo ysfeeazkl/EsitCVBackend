@@ -27,7 +27,7 @@
 **sonra yapılacak işler
 --UserProfile de ki update methodunu geliştir, içine diğer tüm özellikleri alacak ve güncelleyecek şekilde daha komplike bir yapı kur
 --JobPosting de ki question bağlantısına ve JobApplication da ki answer bağlantısı düzeltilecek
---bearer muhabbetşne bakılcak
+--bearer muhabbetşne bakılcak hala bakılcak
 
 
 
