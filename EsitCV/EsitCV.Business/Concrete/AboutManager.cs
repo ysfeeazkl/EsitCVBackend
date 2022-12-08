@@ -47,7 +47,7 @@ namespace EsitCV.Business.Concrete
 
             var about = Mapper.Map<About>(aboutAddDto);
             about.CreatedDate = DateTime.Now;
-            about.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserID").Value);
+            //about.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserID").Value);
 
             userProfileIsExist.AboutID = about.ID;
             userProfileIsExist.About = about;
