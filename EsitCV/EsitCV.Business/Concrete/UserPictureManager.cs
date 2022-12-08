@@ -50,7 +50,7 @@ namespace EsitCV.Business.Concrete
             userPicture.CreatedDate = DateTime.Now;
             //userPicture.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
-            userPicture.FileUrl = (string)result.Message;
+            userPicture.FileUrl = result.Message;
             userPicture.FileName = (string)result.Data;
             userPicture.User = userIsExist;
             userPicture.UserID = userIsExist.ID;

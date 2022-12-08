@@ -53,7 +53,7 @@ namespace EsitCV.Business.Concrete
             //curriculumVitae.CreatedByUserId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(a => a.Type == "UserId").Value);
 
 
-            curriculumVitae.FileUrl = (string)result.Message;
+            curriculumVitae.FileUrl = result.Message;
             curriculumVitae.FileName = (string)result.Data;
             curriculumVitae.User = userIsExist;
             curriculumVitae.UserID = userIsExist.ID;
