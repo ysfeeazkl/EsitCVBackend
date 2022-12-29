@@ -93,7 +93,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllAsync(bool? isDeleted, bool isAscending, int currentPage, int pageSize, OrderBy orderBy)
         {
-            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Questions).Include(a => a.Company).AsNoTracking();
+            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Questions).Include(a => a.Company).ThenInclude(a => a.CompanyPicture).AsNoTracking();
             if (isDeleted.HasValue)
                 query = query.Where(a => a.IsActive == isDeleted);
             switch (orderBy)
@@ -122,7 +122,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllByFilter(JobPostingFilterGetDto jobPostingFilterGetDto)
         {
-            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Company).AsNoTracking();
+            IQueryable<JobPosting> query = DbContext.Set<JobPosting>().Include(a=>a.Company).ThenInclude(a => a.CompanyPicture).AsNoTracking();
 
             if (jobPostingFilterGetDto.Header is not null)
                 query = query.Where(a => a.Header.Contains(jobPostingFilterGetDto.Header));
@@ -156,7 +156,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetAllByCompanyIdAsync(int id)
         {
-            var companyIsExist = await DbContext.Companies.SingleOrDefaultAsync(a => a.ID == id);
+            var companyIsExist = await DbContext.Companies.Include(a=>a.CompanyPicture).SingleOrDefaultAsync(a => a.ID == id);
             if (companyIsExist is null)
                 return new DataResult(ResultStatus.Wrong, "böyle bir şirket bulunamadı");
 

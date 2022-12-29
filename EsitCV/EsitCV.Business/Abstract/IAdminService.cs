@@ -9,7 +9,6 @@ namespace EsitCV.Business.Abstract
 {
     public interface IAdminService
     {
-        public Task<IDataResult> LoginWithPhone { get; set; }
-        public Task<IDataResult> LoginWithEmail { get; set; }
+     
     }
 }
