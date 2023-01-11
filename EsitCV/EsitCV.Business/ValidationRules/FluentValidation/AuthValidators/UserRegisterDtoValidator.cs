@@ -20,10 +20,10 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.AuthValidators
             RuleFor(a => a.UserName).Length(3, 15).WithMessage("kullanıcı adı alanı minimum 3 maksimum 50 karakter olmalıdır.");
             RuleFor(a => a.Birth).NotNull();
 
-            RuleFor(x => x.Password)
-          .NotEmpty().WithMessage("Parola alanı boş bırakılamaz.")
-          .Matches(@"[][""!@$%&*(){}:;,.?/+_=\\-]")
-           .WithMessage("Parola özel bir karakter içermelidir");
+          //  RuleFor(x => x.Password)
+          //.NotEmpty().WithMessage("Parola alanı boş bırakılamaz.")
+          //.Matches(@"[][""!@$%&*(){}:;,.?/+_=\\-]")
+          // .WithMessage("Parola özel bir karakter içermelidir");
         }
     }
 }
