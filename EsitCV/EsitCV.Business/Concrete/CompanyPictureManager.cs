@@ -69,10 +69,10 @@ namespace EsitCV.Business.Concrete
         {
             ValidationTool.Validate(new CompanyPictureUpdateDtoValidator(), companyPictureUpdateDto);
 
-            var companyIsExist = await DbContext.Companies.SingleOrDefaultAsync(a => a.ID == companyPictureUpdateDto.CompanyID);
+            var companyIsExist = await DbContext.Companies.Include(a=>a.CompanyPicture).SingleOrDefaultAsync(a => a.ID == companyPictureUpdateDto.CompanyID);
             if (companyIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir şirket bulunamadı");
-            var companyPictureIsExist = await DbContext.CompanyPictures.SingleOrDefaultAsync(a => a.ID == companyPictureUpdateDto.ID);
+            var companyPictureIsExist = await DbContext.CompanyPictures.SingleOrDefaultAsync(a => a.ID == companyIsExist.CompanyPicture.ID);
             if (companyPictureIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
 
@@ -94,7 +94,7 @@ namespace EsitCV.Business.Concrete
             DbContext.CompanyPictures.Update(companyPicture);
             await DbContext.SaveChangesAsync();
 
-            return new DataResult(ResultStatus.Success, "Şirket Resimi başarıyla güncellendş.", companyPicture);
+            return new DataResult(ResultStatus.Success, "Şirket Resimi başarıyla güncellendi.", companyPicture);
         }
 
 

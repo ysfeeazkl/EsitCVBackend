@@ -12,7 +12,7 @@ namespace EsitCV.Business.ValidationRules.FluentValidation.CompanyPicuteValidato
     {
         public CompanyPictureUpdateDtoValidator()
         {
-            RuleFor(a => a.ID).GreaterThan(0);
+            //RuleFor(a => a.ID).GreaterThan(0);
             RuleFor(a => a.CompanyID).GreaterThan(0);
             RuleFor(a => a.File).NotNull().WithMessage("Dosya alanı dolu olmalıdır");
         }

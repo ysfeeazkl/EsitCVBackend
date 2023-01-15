@@ -9,7 +9,6 @@ namespace EsitCV.Entities.Dtos.CompanyPicuteDtos
 {
     public class CompanyPictureUpdateDto
     {
-        public int ID { get; set; }
         public int CompanyID { get; set; }
         public IFormFile File { get; set; }
     }

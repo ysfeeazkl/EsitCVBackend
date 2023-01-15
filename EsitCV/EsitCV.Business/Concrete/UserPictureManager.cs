@@ -67,10 +67,10 @@ namespace EsitCV.Business.Concrete
         {
             ValidationTool.Validate(new UserPictureUpdateDtoValidator(), userPictureUpdateDto);
 
-            var userIsExist = await DbContext.Users.SingleOrDefaultAsync(a => a.ID == userPictureUpdateDto.UserID);
+            var userIsExist = await DbContext.Users.Include(a=>a.UserPicture).SingleOrDefaultAsync(a => a.ID == userPictureUpdateDto.UserID);
             if (userIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir şirket bulunamadı");
-            var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.ID == userPictureUpdateDto.ID);
+            var userPictureIsExist = await DbContext.UserPictures.SingleOrDefaultAsync(a => a.ID == userIsExist.UserPicture.ID);
             if (userPictureIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir resim bulunamadı");
 
