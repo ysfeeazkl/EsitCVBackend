@@ -13,6 +13,5 @@ namespace EsitCV.Entities.ComplexTypes
         Contractual = 2,
         FreeTime = 3,
         Remote = 4,
-        Intern = 5,
     }
 }

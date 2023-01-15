@@ -40,7 +40,7 @@ namespace EsitCV.Business.Concrete
         {
             ValidationTool.Validate(new CompanyLoginWithEmailDtoValidator(), companyLoginWithEmailDto);
 
-            var company = await DbContext.Companies.SingleOrDefaultAsync(a => a.EmailAddress == companyLoginWithEmailDto.EmailAddress);
+            var company = await DbContext.Companies.Include(a=>a.CompanyPicture).SingleOrDefaultAsync(a => a.EmailAddress == companyLoginWithEmailDto.EmailAddress);
             if (company is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir şirket bulunamadı");
 
@@ -80,7 +80,7 @@ namespace EsitCV.Business.Concrete
         {
             ValidationTool.Validate(new UserLoginWithEmailDtoValidator(), userLoginWithEmailDto);
 
-            var user = await DbContext.Users.SingleOrDefaultAsync(a => a.EmailAddress == userLoginWithEmailDto.EmailAddress);
+            var user = await DbContext.Users.Include(a=>a.CurriculumVitae).Include(a=>a.UserPicture).SingleOrDefaultAsync(a => a.EmailAddress == userLoginWithEmailDto.EmailAddress);
             if (user is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir kullanıcı bulunamadı");
 
@@ -273,6 +273,44 @@ namespace EsitCV.Business.Concrete
             return list;
         }
 
-      
+        public async Task<IDataResult> UserForgotPasswordWithEmail(UserChangePasswordEmailDto userChangePasswordEmailDto)
+        {
+            var user = await DbContext.Users.SingleOrDefaultAsync(a => a.EmailAddress == userChangePasswordEmailDto.EmailAddress);
+            if (user is null)
+                return new DataResult(ResultStatus.Error, Messages.General.NotFoundArgument("kullanıcı"));
+            if (userChangePasswordEmailDto.Password != userChangePasswordEmailDto.ReTypePassword)
+                return new DataResult(ResultStatus.Error, "Şifreler aynı değil.");
+
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(userChangePasswordEmailDto.Password, out passwordHash, out passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            user.ModifiedDate = DateTime.Now;
+            DbContext.Users.Update(user);
+            await DbContext.SaveChangesAsync();
+
+            return new DataResult(ResultStatus.Success,userChangePasswordEmailDto.Password, "Şifre başarıyla değiştirildi.");
+
+        }
+
+        public async Task<IDataResult> CompanyForgotPasswordWithEmail(CompanyChangePasswordEmailDto companyChangePasswordEmailDto)
+        {
+            var company = await DbContext.Companies.SingleOrDefaultAsync(a => a.EmailAddress == companyChangePasswordEmailDto.EmailAddress);
+            if (company is null)
+                return new DataResult(ResultStatus.Error, Messages.General.NotFoundArgument("kullanıcı"));
+            if (companyChangePasswordEmailDto.Password != companyChangePasswordEmailDto.ReTypePassword)
+                return new DataResult(ResultStatus.Error, "Şifreler aynı değil.");
+
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(companyChangePasswordEmailDto.Password, out passwordHash, out passwordSalt);
+            company.PasswordHash = passwordHash;
+            company.PasswordSalt = passwordSalt;
+            company.ModifiedDate = DateTime.Now;
+            DbContext.Companies.Update(company);
+            await DbContext.SaveChangesAsync();
+
+            return new DataResult(ResultStatus.Success, companyChangePasswordEmailDto.Password, "Şifre başarıyla değiştirildi.");
+        }
+
     }
 }

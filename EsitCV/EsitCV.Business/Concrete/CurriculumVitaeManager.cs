@@ -74,7 +74,7 @@ namespace EsitCV.Business.Concrete
             ValidationTool.Validate(new CurriculumVitaeUpdateDtoValidator(), curriculumVitaeUpdateDto);
            
             var cvIsExist = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.UserID == curriculumVitaeUpdateDto.ID);
-            if (cvIsExist is not null)
+            if (cvIsExist is null)
                 return new DataResult(ResultStatus.Error, "böyle bir cv bulunamadı");
 
             var curriculumVitae = Mapper.Map<CurriculumVitae>(curriculumVitaeUpdateDto);
@@ -126,7 +126,7 @@ namespace EsitCV.Business.Concrete
 
         public async Task<IDataResult> GetByIdAsync(int id)
         {
-            var curriculumVitae = await DbContext.CurriculumVitaes.SingleOrDefaultAsync(a => a.Equals(id));
+            var curriculumVitae = await DbContext.CurriculumVitaes.Include(a=>a.User).SingleOrDefaultAsync(a => a.ID == id);
             if (curriculumVitae is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir cv bulunamadı");
             return new DataResult(ResultStatus.Success, curriculumVitae);

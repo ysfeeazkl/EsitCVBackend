@@ -1,5 +1,6 @@
 ﻿using EsitCV.Business.Abstract;
 using EsitCV.Entities.Dtos.AuthDtos;
+using EsitCV.Shared.Utilities.Results.Abstract;
 using EsitCV.Shared.Utilities.Results.ComplexTypes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -64,7 +65,24 @@ namespace EsitCV.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> CompanyForgotPasswordWithEmail([FromBody] CompanyChangePasswordEmailDto companyChangePasswordEmailDto)
+        {
+            var result = await _authService.CompanyForgotPasswordWithEmail(companyChangePasswordEmailDto);
+            if (result.ResultStatus == ResultStatus.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UserForgotPasswordWithEmail([FromBody] UserChangePasswordEmailDto userChangePasswordEmailDto)
+        {
+            var result = await _authService.UserForgotPasswordWithEmail(userChangePasswordEmailDto);
+            if (result.ResultStatus == ResultStatus.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
 
     }
 }

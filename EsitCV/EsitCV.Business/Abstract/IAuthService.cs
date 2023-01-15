@@ -24,7 +24,7 @@ namespace EsitCV.Business.Abstract
         Task<IDataResult> UserRegisterAsync(UserRegisterDto userRegisterDto);
         Task<IDataResult> CompanyLoginWithEmailAsync(CompanyLoginWithEmailDto companyLoginWithEmailDto);
         Task<IDataResult> UserLoginWithEmailAsync(UserLoginWithEmailDto userLoginWithEmailDto);
-        //Task<IDataResult> UserForgotPasswordWithEmail();
-        //Task<IDataResult> CompanyForgotPasswordWithEmail();
+        Task<IDataResult> UserForgotPasswordWithEmail(UserChangePasswordEmailDto userChangePasswordEmailDto);
+        Task<IDataResult> CompanyForgotPasswordWithEmail(CompanyChangePasswordEmailDto companyChangePasswordEmailDto);
     }
 }
