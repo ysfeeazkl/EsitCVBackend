@@ -80,7 +80,8 @@ namespace EsitCV.Data.Concrete.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=EsitCvDb;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
+            //optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=EsitCvDb;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
+            optionsBuilder.UseSqlServer(@"Data Source=mssql02.trwww.com;Initial Catalog=EsitCvDb;User Id=esitcvv;Password=Q!s0yb717;Trusted_Connection=false");
             base.OnConfiguring(optionsBuilder);
 
             //optionsBuilder.UseSqlServer(@"Data Source=94.199.202.242;Initial Catalog=apiesitc_esitcv_db;User Id=esitcv;Password=d2a3FAS3!;Trusted_Connection=false");
