@@ -77,7 +77,7 @@ namespace EsitCV.Business.Concrete
         {
             ValidationTool.Validate(new JobPostingUpdateDtoValidator(), jobPostingUpdateDto);
 
-            var jobPostingIsExist = await DbContext.Companies.SingleOrDefaultAsync(a => a.ID == jobPostingUpdateDto.ID);
+            var jobPostingIsExist = await DbContext.JobPostings.SingleOrDefaultAsync(a => a.ID == jobPostingUpdateDto.ID);
             if (jobPostingIsExist is null)
                 return new DataResult(ResultStatus.Error, "Böyle bir iş ilanı bulunamadı");
 
