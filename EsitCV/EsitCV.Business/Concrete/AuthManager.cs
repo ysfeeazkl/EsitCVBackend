@@ -126,7 +126,7 @@ namespace EsitCV.Business.Concrete
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(companyRegisterDto.Password, out passwordHash, out passwordSalt);
             var company = Mapper.Map<Company>(companyRegisterDto);
-            company.YearOfFoundation = DateTime.Parse(companyRegisterDto.YearOfFoundation, new CultureInfo("es-ES"));
+            //company.YearOfFoundation = DateTime.Parse(companyRegisterDto.YearOfFoundation, new CultureInfo("es-ES"));
             company.PasswordHash = passwordHash;
             company.PasswordSalt = passwordSalt;
             company.IpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();

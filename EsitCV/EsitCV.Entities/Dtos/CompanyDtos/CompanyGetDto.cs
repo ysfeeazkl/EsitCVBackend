@@ -16,7 +16,8 @@ namespace EsitCV.Entities.Dtos.CompanyDtos
         public string Sector { get; set; }
         public string TaxNumber { get; set; }
 
-        public DateTime YearOfFoundation { get; set; }
+        //public DateTime YearOfFoundation { get; set; }
+        public string YearOfFoundation { get; set; }
         public DateTime LastLogin { get; set; }
 
         public Location Location { get; set; }

@@ -18,7 +18,7 @@ namespace EsitCV.Data.Concrete.Mappings
             builder.Property(u => u.Name).IsRequired();
             builder.Property(u => u.Name).HasMaxLength(50);
             builder.Property(u => u.TaxNumber).IsRequired();
-            builder.Property(u => u.TaxNumber).HasMaxLength(10);
+            builder.Property(u => u.TaxNumber).HasMaxLength(11);
             builder.Property(u => u.Sector).IsRequired();
             builder.Property(u => u.Sector).HasMaxLength(30);
             builder.Property(u => u.EmailAddress).IsRequired();

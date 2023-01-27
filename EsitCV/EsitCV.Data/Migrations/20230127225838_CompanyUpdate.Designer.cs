@@ -4,6 +4,7 @@ using EsitCV.Data.Concrete.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EsitCV.Data.Migrations
 {
     [DbContext(typeof(EsitCVContext))]
-    partial class EsitCVContextModelSnapshot : ModelSnapshot
+    [Migration("20230127225838_CompanyUpdate")]
+    partial class CompanyUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,8 +137,8 @@ namespace EsitCV.Data.Migrations
 
                     b.Property<string>("TaxNumber")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("YearOfFoundation")
                         .HasColumnType("nvarchar(max)");
@@ -343,7 +345,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 1,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(757),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3558),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -353,7 +355,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 2,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(763),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3561),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -363,7 +365,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 3,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(765),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3563),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -373,7 +375,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 4,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(766),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3564),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -383,7 +385,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 5,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(767),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3565),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -393,7 +395,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 6,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(768),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3566),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -403,7 +405,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 7,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 971, DateTimeKind.Local).AddTicks(770),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 854, DateTimeKind.Local).AddTicks(3568),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -1126,7 +1128,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 1,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 970, DateTimeKind.Local).AddTicks(1687),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 853, DateTimeKind.Local).AddTicks(4263),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -1136,7 +1138,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 2,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 970, DateTimeKind.Local).AddTicks(1689),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 853, DateTimeKind.Local).AddTicks(4264),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
@@ -1146,7 +1148,7 @@ namespace EsitCV.Data.Migrations
                         {
                             ID = 3,
                             CreatedByUserId = 0,
-                            CreatedDate = new DateTime(2023, 1, 28, 2, 6, 42, 970, DateTimeKind.Local).AddTicks(1690),
+                            CreatedDate = new DateTime(2023, 1, 28, 1, 58, 37, 853, DateTimeKind.Local).AddTicks(4317),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByUserId = 0,
